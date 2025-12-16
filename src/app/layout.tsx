@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
+
 import { WishlistProvider } from "@/context/wishlist-context";
 
 const outfit = Outfit({
@@ -23,15 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${outfit.variable} font-sans antialiased bg-background text-foreground transition-colors duration-300`}>
-        <ThemeProvider
-          attribute="class"
-          forcedTheme="light"
-          disableTransitionOnChange
-        >
           <WishlistProvider>
             {children}
           </WishlistProvider>
-        </ThemeProvider>
       </body>
     </html>
   );
