@@ -15,18 +15,18 @@
     /* Almost White */
     --secondary-foreground: 139 0 0;
 
-    --muted: 242 232 224;
-    --muted-foreground: 120 100 90;
+    --muted: 245 245 245;
+    --muted-foreground: 115 115 115;
 
-    --accent: 212 163 115;
-    /* #D4A373 Terra cotta */
-    --accent-foreground: 255 255 255;
+    --accent: 250 250 250;
+    /* Light Gray */
+    --accent-foreground: 139 0 0;
 
     --card: 255 255 255;
-    --card-foreground: 60 40 30;
+    --card-foreground: 0 0 0;
 
-    --border: 230 220 210;
-    --input: 230 220 210;
+    --border: 228 228 228;
+    --input: 228 228 228;
 
     --radius: 0.75rem;
   }
