@@ -2,6 +2,8 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import Image from "next/image"
 
+import { AnimatedHeading } from "@/components/ui/animated-heading"
+
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-background">
@@ -10,8 +12,8 @@ export default function AboutPage() {
       {/* Header */}
       <section className="relative h-[400px] flex items-center justify-center bg-primary/10 overflow-hidden">
         <div className="container px-4 text-center z-10">
-          <h1 className="text-5xl font-bold mb-4">About Us</h1>
-          <p className="text-xl text-muted-foreground">The story behind the sweetness.</p>
+          <AnimatedHeading title="About Us" />
+          <p className="text-xl text-muted-foreground mt-4">The story behind the sweetness.</p>
         </div>
         <div className="absolute inset-0 opacity-10 pattern-dots" /> 
       </section>

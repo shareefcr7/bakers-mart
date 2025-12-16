@@ -8,6 +8,8 @@ import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { ArrowRight, HeartOff } from "lucide-react"
 
+import { AnimatedHeading } from "@/components/ui/animated-heading"
+
 export default function WishlistPage() {
   const { items } = useWishlist()
 
@@ -17,8 +19,8 @@ export default function WishlistPage() {
       
       <div className="bg-primary/5 py-12 mb-8">
         <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl font-bold mb-4">My Wishlist</h1>
-            <p className="text-muted-foreground max-w-2xl mx-auto">Your saved items for future baking masterpieces.</p>
+            <AnimatedHeading title="My Wishlist" />
+            <p className="text-muted-foreground max-w-2xl mx-auto mt-4">Your saved items for future baking masterpieces.</p>
         </div>
       </div>
 

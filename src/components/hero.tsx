@@ -8,51 +8,98 @@ import { motion } from "framer-motion"
 export function Hero() {
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
+      {/* Background Image with Parallax-like feel */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/hero-bg.png"
           alt="Premium Chocolate Cake"
           fill
-          className="object-cover"
+          className="object-cover scale-105"
           priority
         />
-        <div className="absolute inset-0 bg-black/40 dark:bg-black/60" />
+        {/* Gradient Overlay for better text readability and mood */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="max-w-4xl mx-auto"
         >
-          <span className="inline-block py-1.5 px-4 border border-white/40 rounded-full text-white text-sm font-semibold tracking-wider mb-6 backdrop-blur-md bg-white/5">
-            EST. 2024
-          </span>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
-            Elevate Your <span className="italic">Baking Artistry</span>
-          </h1>
-          <p className="text-lg md:text-xl text-white/95 max-w-2xl mx-auto mb-10 font-medium leading-relaxed drop-shadow-md">
-            Discover premium baking tools, ingredients, and accessories designed for professionals and passionate home bakers.
-          </p>
+            {/* Glassmorphism Badge */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="inline-flex items-center gap-2 py-2 px-6 border border-white/20 rounded-full bg-white/5 backdrop-blur-md mb-8 shadow-2xl"
+          >
+            <span className="w-2 h-2 rounded-full bg-[#d4af37] animate-pulse" />
+            <span className="text-white/90 text-sm font-medium tracking-[0.2em] uppercase">
+             Artisan Bakery Since 2024
+            </span>
+          </motion.div>
+
+          {/* Main Heading */}
+          <motion.h1 
+            className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 tracking-tighter leading-tight drop-shadow-2xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+          >
+            Taste the <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] to-[#f3e5b5]" style={{ fontFamily: 'Playfair Display, serif' }}>Luxury</span> <br />
+            in Every Bite
+          </motion.h1>
+
+          <motion.p 
+            className="text-lg md:text-2xl text-white/80 max-w-2xl mx-auto mb-12 font-light leading-relaxed"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+          >
+            Experience the finest selection of handcrafted cakes and pastries, 
+            baked with passion and perfected for your special moments.
+          </motion.p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+          >
             <Link 
               href="/products" 
-              className="px-8 py-3 bg-primary text-primary-foreground font-semibold rounded-full hover:bg-primary/90 transition-all transform hover:scale-105"
+              className="group relative px-10 py-4 bg-[#720e1e] text-white font-bold text-lg rounded-full overflow-hidden shadow-lg shadow-[#720e1e]/30 transition-all hover:scale-105 hover:shadow-[#720e1e]/50"
             >
-              Shop Collection
+              <span className="relative z-10 flex items-center gap-2">
+                Explore Menu
+                <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#8a1c2e] to-[#720e1e] opacity-0 group-hover:opacity-100 transition-opacity" />
             </Link>
+            
             <Link 
               href="/about" 
-              className="px-8 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-white font-semibold rounded-full hover:bg-white/20 transition-all"
+              className="px-10 py-4 bg-transparent border border-white/30 text-white font-semibold text-lg rounded-full hover:bg-white/10 hover:border-white/50 transition-all backdrop-blur-sm"
             >
-              Our Story
+              Our Heritage
             </Link>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
+
+        {/* Scroll Indicator */}
+      <motion.div 
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 text-white/50 flex flex-col items-center gap-2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 1 }}
+      >
+        <span className="text-xs uppercase tracking-widest">Scroll</span>
+        <div className="w-[1px] h-12 bg-gradient-to-b from-white/0 via-white/50 to-white/0" />
+      </motion.div>
     </section>
   )
 }

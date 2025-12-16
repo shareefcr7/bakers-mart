@@ -1,45 +1,51 @@
 "use client"
 
-import { categoryData } from "@/lib/data"
-import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight } from "lucide-react"
+import { motion, useScroll, useTransform } from "framer-motion"
+import { useRef } from "react"
 
 export function Highlights() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  })
+
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15])
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.6, 1, 1, 0.6])
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"])
+
   return (
-    <section className="py-20 bg-secondary text-secondary-foreground">
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-end mb-10">
-          <div>
-            <h2 className="text-2xl md:text-3xl font-bold mb-2 text-secondary-foreground">Shop By Collections</h2>
-            <p className="text-sm md:text-base text-secondary-foreground/80">Everything you need for your baking masterpieces.</p>
-          </div>
-          <Link href="/products" className="text-secondary-foreground font-semibold flex items-center gap-2 hover:gap-3 transition-all hover:text-white">
-            View All <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
+    <section ref={containerRef} className="relative w-full h-[60vh] md:h-screen overflow-hidden bg-black">
+        <motion.div 
+            style={{ scale, opacity, y }}
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="absolute inset-0 w-full h-full"
+        >
+            <Image
+                src="/bakersmart-banner.jpg"
+                alt="Bakersmart Premium Collection"
+                fill
+                className="object-cover object-center"
+                priority
+            />
+        </motion.div>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          {categoryData.slice(0, 15).map((cat) => (
-             <Link 
-               key={cat.name} 
-               href={`/products?category=${cat.name}`}
-               className="group relative h-48 md:h-64 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all"
-             >
-               <Image
-                  src={cat.image}
-                  alt={cat.name}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-               />
-               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
-               <div className="absolute inset-0 flex items-end justify-center p-6 text-center">
-                  <h3 className="text-white font-bold text-2xl tracking-tight drop-shadow-lg transform group-hover:-translate-y-2 transition-transform duration-300">{cat.name}</h3>
-               </div>
-             </Link>
-          ))}
-        </div>
-      </div>
+        {/* Premium Overlay Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 pointer-events-none" />
+
+        {/* Optional Scroll Hint for Desktop */}
+        <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 1 }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-white/70"
+        >
+            <span className="text-[10px] uppercase tracking-[0.3em]">Discover</span>
+            <div className="w-[1px] h-8 bg-gradient-to-b from-white/0 via-white/50 to-white/0" />
+        </motion.div>
     </section>
   )
 }

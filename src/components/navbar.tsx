@@ -4,7 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
-import { Menu, X, Search, Heart } from "lucide-react"
+import { Menu, X, Search, Heart, ArrowRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { motion, AnimatePresence } from "framer-motion"
@@ -12,10 +12,19 @@ import { useWishlist } from "@/context/wishlist-context"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false)
+  const [isScrolled, setIsScrolled] = React.useState(false)
   const pathname = usePathname()
   const { items } = useWishlist()
   
   const wishlistCount = items.length
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const links = [
     { href: "/", label: "Home" },
@@ -25,31 +34,53 @@ export function Navbar() {
   ]
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-white/20 bg-primary shadow-md">
-      <div className="container mx-auto px-4 h-[100px] flex items-center justify-between">
-        <Link href="/" className="h-full py-2 flex items-center">
+    <nav className={cn(
+      "sticky top-0 z-50 w-full transition-all duration-300 border-b",
+      isScrolled 
+        ? "bg-primary/95 backdrop-blur-md shadow-lg border-white/10 py-0" 
+        : "bg-primary border-white/20 py-2"
+    )}>
+      <div className={cn(
+        "container mx-auto px-4 flex items-center justify-between transition-all duration-300",
+        isScrolled ? "h-[70px]" : "h-[100px]"
+      )}>
+        <Link href="/" className="h-full py-1 flex items-center">
           <Image 
-            src="/logo-new.jpg" 
+            src="/bakersmart-logo.jpg" 
             alt="Bakery Mart" 
             width={280} 
             height={90} 
-            className="h-[90px] w-auto object-contain"
+            className={cn(
+              "w-auto object-contain transition-all duration-300",
+              isScrolled ? "h-[60px]" : "h-[90px]"
+            )}
             priority
           />
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-8">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={cn(
-                "text-sm font-medium transition-colors hover:text-white/80",
-                pathname === link.href ? "text-white font-bold" : "text-white"
-              )}
+              className="relative group py-2"
             >
-              {link.label}
+              <span className={cn(
+                "text-sm font-medium transition-colors group-hover:text-white",
+                pathname === link.href ? "text-white font-bold" : "text-white/80"
+              )}>
+                {link.label}
+              </span>
+              {pathname === link.href && (
+                <motion.div
+                  layoutId="navbar-underline"
+                  className="absolute left-0 right-0 bottom-0 h-0.5 bg-white"
+                  initial={false}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                />
+              )}
+              <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </Link>
           ))}
         </div>
@@ -57,11 +88,11 @@ export function Navbar() {
         <div className="flex items-center gap-4">
            {/* Simple Search Trigger (Visual Only for now) */}
           
-          <Link href="/products" className="text-white hover:text-white/80" aria-label="Search Products">
+          <Link href="/products" className="text-white hover:text-white/80 transition-transform hover:scale-110 duration-200" aria-label="Search Products">
             <Search className="w-5 h-5" />
           </Link>
 
-          <Link href="/wishlist" className="relative text-white hover:text-white/80 transition-colors">
+          <Link href="/wishlist" className="relative text-white hover:text-white/80 transition-transform hover:scale-110 duration-200">
             <Heart className="w-5 h-5" />
             {wishlistCount > 0 && (
               <span className="absolute -top-2 -right-2 bg-white text-primary text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold animate-in zoom-in">
@@ -70,31 +101,34 @@ export function Navbar() {
             )}
           </Link>
           
-
-
           {/* Mobile Menu Trigger */}
           <button
             className="md:hidden text-white w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded-full transition-colors focus:outline-none"
             onClick={() => setIsOpen(true)}
             aria-label="Open menu"
           >
-            <Menu className="w-6 h-6" />
+            <Menu className="w-7 h-7" />
           </button>
         </div>
       </div>
 
       {/* Mobile Nav Overlay (Full Screen) */}
+      <AnimatePresence>
       {isOpen && (
-        <div 
-            className="fixed inset-0 top-0 left-0 w-screen h-screen z-[9999] bg-[#8B0000] text-white flex flex-col animate-in slide-in-from-right-10 duration-200 overflow-hidden"
-            style={{ backgroundColor: "#8B0000", opacity: 1 }}
+        <motion.div 
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed inset-0 top-0 left-0 w-screen h-screen z-[9999] bg-[#720e1e] text-white flex flex-col overflow-hidden"
+            style={{ backgroundColor: "#720e1e" }}
         >
             {/* Header Row */}
-            <div className="flex items-center justify-between py-4 pr-5 pl-5 border-b border-white/20 bg-[#8B0000]">
+            <div className="flex items-center justify-between py-4 pr-5 pl-5 border-b border-white/20 bg-[#720e1e]">
                  {/* Left: Logo */}
                  <Link href="/" onClick={() => setIsOpen(false)} className="transition-opacity hover:opacity-80">
                     <Image 
-                        src="/logo-new.jpg" 
+                        src="/bakersmart-logo.jpg" 
                         alt="Bakery Mart" 
                         width={200} 
                         height={50} 
@@ -114,32 +148,44 @@ export function Navbar() {
 
             {/* Links Container */}
             <div className="flex flex-col items-start p-6 gap-6">
-              {links.map((link) => (
-                    <div key={link.href} className="w-full">
+              {links.map((link, i) => (
+                    <motion.div 
+                      key={link.href} 
+                      className="w-full"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.1 }}
+                    >
                         <Link
                         href={link.href}
                         onClick={() => setIsOpen(false)}
                         className={cn(
-                            "text-lg font-bold text-white transition-colors hover:text-white/80 flex items-center justify-between group py-2",
+                            "text-xl font-bold text-white transition-colors hover:text-white/80 flex items-center justify-between group py-2",
                             pathname === link.href ? "underline decoration-2 underline-offset-4" : "text-white"
                         )}
                         >
                         {link.label === "Products" ? "Our Products" : link.label}
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-white/50 group-hover:text-white"><path d="m6 9 6 6 6-6"/></svg>
+                        <ArrowRight className="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
                         </Link>
-                    </div>
+                    </motion.div>
               ))}
 
-              {/* Pink CTA */}
-              <div className="mt-4 pt-4 w-full border-t border-white/20">
+              {/* CTA */}
+              <motion.div 
+                className="mt-4 pt-4 w-full border-t border-white/20"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+              >
                 <Link href="/contact" onClick={() => setIsOpen(false)} className="text-white font-bold text-lg hover:text-white/80 transition-colors flex items-center gap-2 group">
                     Start Custom Order
                     <span className="text-sm group-hover:translate-x-1 transition-transform">→</span>
                 </Link>
-              </div>
+              </motion.div>
             </div>
-        </div>
+        </motion.div>
       )}
+      </AnimatePresence>
     </nav>
   )
 }

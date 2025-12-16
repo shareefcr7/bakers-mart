@@ -4,6 +4,8 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { Mail, Phone, MapPin, Send } from "lucide-react"
 
+import { AnimatedHeading } from "@/components/ui/animated-heading"
+
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-background">
@@ -11,8 +13,8 @@ export default function ContactPage() {
       
       <section className="bg-primary/5 py-16">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
-          <p className="text-muted-foreground">We'd love to hear from you. Get in touch with us.</p>
+          <AnimatedHeading title="Contact Us" />
+          <p className="text-muted-foreground mt-4">We'd love to hear from you. Get in touch with us.</p>
         </div>
       </section>
 
