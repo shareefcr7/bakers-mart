@@ -10,12 +10,23 @@ export default function AboutPage() {
       <Navbar />
       
       {/* Header */}
-      <section className="relative h-[400px] flex items-center justify-center bg-primary/10 overflow-hidden">
-        <div className="container px-4 text-center z-10">
-          <AnimatedHeading title="About Us" />
-          <p className="text-xl text-muted-foreground mt-4">The story behind the sweetness.</p>
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+            <Image
+                src="/about-bg.jpg"
+                alt="About Us"
+                fill
+                className="object-cover"
+                priority
+            />
+            <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
         </div>
-        <div className="absolute inset-0 opacity-10 pattern-dots" /> 
+
+        <div className="container px-4 text-center relative z-10">
+          <AnimatedHeading title="About Us" textColor="text-white" />
+          <p className="text-xl text-white/90 mt-4 max-w-2xl mx-auto font-medium">The story behind the sweetness.</p>
+        </div>
       </section>
 
       <section className="py-20">
