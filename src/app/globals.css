@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: 255 252 250; /* #FFFCFA Premium Cream */
+    --foreground: 60 40 30;    /* #3C281E Dark Chocolate */
+    
+    --primary: 212 163 115;    /* #D4A373 Gold/Crust */
+    --primary-foreground: 255 255 255;
+
+    --secondary: 250 237 205;  /* #FAEDCD Light Sponge */
+    --secondary-foreground: 60 40 30;
+
+    --muted: 242 232 224;
+    --muted-foreground: 120 100 90;
+
+    --accent: 226 149 120;     /* #E29578 Terra cotta */
+    --accent-foreground: 255 255 255;
+
+    --card: 255 255 255;
+    --card-foreground: 60 40 30;
+
+    --border: 230 220 210;
+    --input: 230 220 210;
+    
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 26 18 11;    /* #1A120B Deep Coffee */
+    --foreground: 250 240 230; /* #FAF0E6 Creamy Text */
+
+    --primary: 212 163 115;    /* #D4A373 */
+    --primary-foreground: 26 18 11;
+
+    --secondary: 60 45 35;     /* Darker accent */
+    --secondary-foreground: 250 240 230;
+
+    --muted: 44 32 25;
+    --muted-foreground: 160 140 130;
+
+    --accent: 226 149 120;
+    --accent-foreground: 255 255 255;
+
+    --card: 36 26 18;
+    --card-foreground: 250 240 230;
+
+    --border: 60 45 35;
+    --input: 60 45 35;
+  }
+}
+
+@theme inline {
+  --color-background: rgb(var(--background));
+  --color-foreground: rgb(var(--foreground));
+  --color-primary: rgb(var(--primary));
+  --color-primary-foreground: rgb(var(--primary-foreground));
+  --color-secondary: rgb(var(--secondary));
+  --color-secondary-foreground: rgb(var(--secondary-foreground));
+  --color-muted: rgb(var(--muted));
+  --color-muted-foreground: rgb(var(--muted-foreground));
+  --color-accent: rgb(var(--accent));
+  --color-accent-foreground: rgb(var(--accent-foreground));
+  --color-card: rgb(var(--card));
+  --color-card-foreground: rgb(var(--card-foreground));
+  --color-border: rgb(var(--border));
+  --color-input: rgb(var(--input));
+  
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}

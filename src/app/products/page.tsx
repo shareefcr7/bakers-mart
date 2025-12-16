@@ -1,0 +1,99 @@
+"use client"
+
+import { useState, useEffect, Suspense } from "react"
+import { Navbar } from "@/components/navbar"
+import { Footer } from "@/components/footer"
+import { ProductCard } from "@/components/product-card"
+import { categories, products } from "@/lib/data"
+import { useSearchParams } from "next/navigation"
+import { AnimatePresence, motion } from "framer-motion"
+import { cn } from "@/lib/utils"
+
+function ProductContent() {
+  const searchParams = useSearchParams()
+  const initialCategory = searchParams.get("category") || "All"
+  const [activeCategory, setActiveCategory] = useState(initialCategory)
+  
+  useEffect(() => {
+     if(searchParams.get("category")) {
+         setActiveCategory(searchParams.get("category")!)
+     }
+  }, [searchParams])
+
+  const filteredProducts = activeCategory === "All" 
+    ? products 
+    : products.filter(p => p.category === activeCategory)
+
+  return (
+    <div className="container mx-auto px-4 pb-20">
+        <div className="flex flex-col lg:flex-row gap-8">
+            {/* Sidebar Filters */}
+            <div className="w-full lg:w-64 flex-shrink-0 space-y-2">
+                <h3 className="font-bold text-2xl mb-6 px-2 text-foreground/80 font-serif">Categories</h3>
+                <div className="flex flex-col gap-1">
+                    {categories.map(cat => (
+                        <button
+                            key={cat}
+                            onClick={() => setActiveCategory(cat)}
+                            className={cn(
+                                "text-left px-5 py-3 text-base font-medium transition-all rounded-r-3xl border-l-4",
+                                activeCategory === cat 
+                                    ? "bg-primary text-primary-foreground border-primary-foreground/20 shadow-sm translate-x-1" 
+                                    : "border-transparent hover:bg-secondary/40 text-muted-foreground hover:pl-6"
+                            )}
+                        >
+                            {cat}
+                        </button>
+                    ))}
+                </div>
+            </div>
+            
+            {/* Product Grid */}
+            <div className="flex-1">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <AnimatePresence mode="popLayout">
+                        {filteredProducts.map(product => (
+                            <motion.div
+                                key={product.id}
+                                layout
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.9 }}
+                                transition={{ duration: 0.2 }}
+                            >
+                                <ProductCard product={product} />
+                            </motion.div>
+                        ))}
+                    </AnimatePresence>
+                </div>
+                {filteredProducts.length === 0 && (
+                    <div className="text-center py-20 text-muted-foreground">
+                        No products found in this category.
+                    </div>
+                )}
+            </div>
+        </div>
+      </div>
+  )
+}
+
+export default function ProductsPage() {
+  return (
+    <main className="min-h-screen bg-background">
+      <Navbar />
+      
+      <div className="bg-primary/5 py-12 mb-8">
+        <div className="container mx-auto px-4 text-center">
+            <h1 className="text-4xl font-bold mb-4">Our Products</h1>
+            <p className="text-muted-foreground max-w-2xl mx-auto">Explore our extensive collection of professional baking supplies.</p>
+        </div>
+      </div>
+
+      <Suspense fallback={<div className="container mx-auto px-4 py-20 text-center">Loading products...</div>}>
+         <ProductContent />
+      </Suspense>
+      
+      <Footer />
+    </main>
+  )
+}
