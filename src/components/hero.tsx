@@ -27,13 +27,13 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <span className="inline-block py-1 px-3 border border-white/30 rounded-full text-white/90 text-sm font-medium tracking-wide mb-4 backdrop-blur-sm">
+          <span className="inline-block py-1.5 px-4 border border-white/40 rounded-full text-white text-sm font-semibold tracking-wider mb-6 backdrop-blur-md bg-white/5">
             EST. 2024
           </span>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight">
-            Elevate Your <span className="text-white italic">Baking Artistry</span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
+            Elevate Your <span className="italic">Baking Artistry</span>
           </h1>
-          <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-8 font-light">
+          <p className="text-lg md:text-xl text-white/95 max-w-2xl mx-auto mb-10 font-medium leading-relaxed drop-shadow-md">
             Discover premium baking tools, ingredients, and accessories designed for professionals and passionate home bakers.
           </p>
           

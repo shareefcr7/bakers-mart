@@ -64,59 +64,66 @@ export function Navbar() {
           
           <ThemeToggle />
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Trigger */}
           <button
-            className="md:hidden text-muted-foreground"
-            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden text-foreground w-10 h-10 flex items-center justify-center hover:bg-secondary/50 rounded-full transition-colors focus:outline-none"
+            onClick={() => setIsOpen(true)}
+            aria-label="Open menu"
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            <Menu className="w-6 h-6" />
           </button>
         </div>
       </div>
 
-      {/* Mobile Nav */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 top-16 z-40 bg-background/95 backdrop-blur-xl md:hidden overflow-y-auto"
-          >
-            <div className="flex flex-col items-center justify-center min-h-[60vh] gap-8 p-8">
-              {links.map((link, i) => (
-                <motion.div
-                  key={link.href}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                    <Link
-                      href={link.href}
-                      onClick={() => setIsOpen(false)}
-                      className={cn(
-                        "text-3xl font-bold tracking-tight transition-colors hovered-text-effect",
-                        pathname === link.href ? "text-primary" : "text-foreground hover:text-primary"
-                      )}
-                    >
-                      {link.label}
-                    </Link>
-                </motion.div>
-              ))}
-              
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                className="mt-8 flex gap-6"
-              >
-                  {/* Additional Mobile-Only Actions could go here */}
-              </motion.div>
+      {/* Mobile Nav Overlay (Full Screen) */}
+      {isOpen && (
+        <div 
+            className="fixed inset-0 top-0 left-0 w-screen h-screen z-[9999] bg-[#1A120B] text-white flex flex-col animate-in slide-in-from-right-10 duration-200 overflow-hidden"
+            style={{ backgroundColor: "#1A120B", opacity: 1 }}
+        >
+            {/* Header Row */}
+            <div className="flex items-center justify-between p-4 border-b border-[#C19D6C]/20 bg-[#1A120B]">
+                 {/* Left: Logo */}
+                 <span className="font-serif italic text-xl font-bold text-white">Bakery Mart</span>
+
+                 {/* Right: Close Button */}
+                 <button 
+                    onClick={() => setIsOpen(false)}
+                    className="w-10 h-10 flex items-center justify-center border border-[#C19D6C] rounded text-white hover:bg-white/10 transition-colors focus:outline-none"
+                    aria-label="Close menu"
+                 >
+                    <X className="w-5 h-5" />
+                 </button>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+
+            {/* Links Container */}
+            <div className="flex flex-col items-start p-6 gap-6">
+              {links.map((link) => (
+                    <div key={link.href} className="w-full">
+                        <Link
+                        href={link.href}
+                        onClick={() => setIsOpen(false)}
+                        className={cn(
+                            "text-lg font-bold text-white transition-colors hover:text-[#C19D6C] flex items-center justify-between group py-2",
+                            pathname === link.href ? "text-[#C19D6C]" : "text-white"
+                        )}
+                        >
+                        {link.label === "Products" ? "Our Products" : link.label}
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-white/50 group-hover:text-[#C19D6C]"><path d="m6 9 6 6 6-6"/></svg>
+                        </Link>
+                    </div>
+              ))}
+
+              {/* Pink CTA */}
+              <div className="mt-4 pt-4 w-full border-t border-[#C19D6C]/10">
+                <Link href="/contact" onClick={() => setIsOpen(false)} className="text-[#ea4c89] font-bold text-lg hover:text-[#ea4c89]/80 transition-colors flex items-center gap-2">
+                    Start Custom Order
+                    <span className="text-sm">→</span>
+                </Link>
+              </div>
+            </div>
+        </div>
+      )}
     </nav>
   )
 }
