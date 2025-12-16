@@ -29,7 +29,7 @@ export function Navbar() {
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/">
           <Image 
-            src="/logo.png" 
+            src="/logo-new.jpg" 
             alt="Bakery Mart" 
             width={280} 
             height={80} 
@@ -94,7 +94,7 @@ export function Navbar() {
                  {/* Left: Logo */}
                  <Link href="/" onClick={() => setIsOpen(false)} className="transition-opacity hover:opacity-80">
                     <Image 
-                        src="/logo.png" 
+                        src="/logo-new.jpg" 
                         alt="Bakery Mart" 
                         width={200} 
                         height={50} 
