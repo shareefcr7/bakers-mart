@@ -98,7 +98,7 @@ export function Navbar() {
                         alt="Bakery Mart" 
                         width={200} 
                         height={50} 
-                        className="h-[50px] w-auto object-contain object-left"
+                        className="h-[50px] w-auto object-contain object-left -ml-4"
                     />
                  </Link>
 
