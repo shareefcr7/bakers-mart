@@ -27,13 +27,13 @@ export function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md">
       <div className="container mx-auto px-4 h-[100px] flex items-center justify-between">
-        <Link href="/">
+        <Link href="/" className="h-full py-2 flex items-center">
           <Image 
             src="/logo-new.jpg" 
             alt="Bakery Mart" 
-            width={280} 
-            height={80} 
-            className="w-[250px] h-auto object-contain"
+            width={300} 
+            height={100} 
+            className="h-full w-auto object-contain"
             priority
           />
         </Link>
