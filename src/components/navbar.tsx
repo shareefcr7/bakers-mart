@@ -31,9 +31,9 @@ export function Navbar() {
           <Image 
             src="/logo.png" 
             alt="Bakery Mart" 
-            width={180} 
-            height={40} 
-            className="h-12 w-auto object-contain"
+            width={240} 
+            height={60} 
+            className="h-16 w-auto object-contain"
             priority
           />
         </Link>
@@ -96,9 +96,9 @@ export function Navbar() {
                     <Image 
                         src="/logo.png" 
                         alt="Bakery Mart" 
-                        width={150} 
-                        height={40} 
-                        className="h-8 w-auto object-contain"
+                        width={180} 
+                        height={50} 
+                        className="h-10 w-auto object-contain"
                     />
                  </Link>
 
