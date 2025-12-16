@@ -31,9 +31,9 @@ export function Navbar() {
           <Image 
             src="/logo-new.jpg" 
             alt="Bakery Mart" 
-            width={300} 
-            height={100} 
-            className="h-full w-auto object-contain"
+            width={280} 
+            height={90} 
+            className="h-[90px] w-auto object-contain"
             priority
           />
         </Link>
