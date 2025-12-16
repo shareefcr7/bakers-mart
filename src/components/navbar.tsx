@@ -46,7 +46,7 @@ export function Navbar() {
               href={link.href}
               className={cn(
                 "text-sm font-medium transition-colors hover:text-primary",
-                pathname === link.href ? "text-primary" : "text-muted-foreground"
+                pathname === link.href ? "text-primary" : "text-foreground"
               )}
             >
               {link.label}
@@ -57,11 +57,11 @@ export function Navbar() {
         <div className="flex items-center gap-4">
            {/* Simple Search Trigger (Visual Only for now) */}
           
-          <Link href="/products" className="text-muted-foreground hover:text-primary" aria-label="Search Products">
+          <Link href="/products" className="text-foreground hover:text-primary" aria-label="Search Products">
             <Search className="w-5 h-5" />
           </Link>
 
-          <Link href="/wishlist" className="relative text-muted-foreground hover:text-primary transition-colors">
+          <Link href="/wishlist" className="relative text-foreground hover:text-primary transition-colors">
             <Heart className="w-5 h-5" />
             {wishlistCount > 0 && (
                 <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold animate-in zoom-in">
@@ -90,7 +90,7 @@ export function Navbar() {
             style={{ backgroundColor: "#1A120B", opacity: 1 }}
         >
             {/* Header Row */}
-            <div className="flex items-center justify-between py-4 pr-1 pl-0 border-b border-[#C19D6C]/20 bg-[#1A120B]">
+            <div className="flex items-center justify-between py-4 pr-5 pl-5 border-b border-[#C19D6C]/20 bg-[#1A120B]">
                  {/* Left: Logo */}
                  <Link href="/" onClick={() => setIsOpen(false)} className="transition-opacity hover:opacity-80">
                     <Image 
