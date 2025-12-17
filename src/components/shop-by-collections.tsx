@@ -155,8 +155,8 @@ const collections = [
 export function ShopByCollections() {
   return (
     <section className="bg-neutral-950">
-      {/* White Header Section */}
-      <div className="bg-white py-16 overflow-hidden">
+      {/* Header Section - Black Background */}
+      <div className="bg-black py-16 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="text-center relative">
             {/* Left Logo */}
@@ -166,7 +166,7 @@ export function ShopByCollections() {
                   src="/section-heading-red-white.png"
                   alt="Cake Decoration"
                   fill
-                  className="object-contain opacity-30 mix-blend-multiply"
+                  className="object-contain opacity-80"
                 />
               </div>
             </div>
@@ -178,16 +178,16 @@ export function ShopByCollections() {
                   src="/section-heading-red-white.png"
                   alt="Cake Decoration"
                   fill
-                  className="object-contain opacity-30 mix-blend-multiply"
+                  className="object-contain opacity-80"
                 />
               </div>
             </div>
 
             <AnimatedHeading 
               title="Shop By Collections" 
-              className="text-3xl md:text-5xl font-bold text-[#7E0806] mb-4"
+              className="text-3xl md:text-5xl font-bold text-white mb-4"
             />
-            <p className="text-[#7E0806]/80 max-w-2xl mx-auto text-lg mt-4">
+            <p className="text-neutral-400 max-w-2xl mx-auto text-lg mt-4">
               Curated selections of our finest cakes and baking essentials.
             </p>
           </div>
