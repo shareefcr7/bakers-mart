@@ -46,7 +46,7 @@ export function Navbar() {
       )}>
         <Link href="/" className="h-full py-1 flex items-center">
           <Image 
-            src="/bakersmart-logo-gold-red.jpg" 
+            src="/navbar-logo-final.png" 
             alt="Bakery Mart" 
             width={300} 
             height={140} 
@@ -128,7 +128,7 @@ export function Navbar() {
                  {/* Left: Logo */}
                  <Link href="/" onClick={() => setIsOpen(false)} className="transition-opacity hover:opacity-80">
                     <Image 
-                        src="/bakersmart-logo-gold-red.jpg" 
+                        src="/navbar-logo-final.png" 
                         alt="Bakery Mart" 
                         width={200} 
                         height={70} 
