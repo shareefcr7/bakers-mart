@@ -29,10 +29,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-20 bg-black">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
-             <div className="relative aspect-video rounded-2xl overflow-hidden bg-muted shadow-lg">
+             <div className="relative aspect-video rounded-2xl overflow-hidden bg-white/5 shadow-2xl border border-white/10">
                  <Image
                     src="/about-company.jpg"
                     alt="Bakersmart Story"
@@ -41,26 +41,26 @@ export default function AboutPage() {
                  />
              </div>
              <div>
-                 <h2 className="text-3xl font-bold mb-6">Our Story</h2>
-                 <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                 <h2 className="text-3xl font-bold mb-6 text-white">Our Story</h2>
+                 <p className="text-lg text-white/70 leading-relaxed mb-6">
                      Founded in 2024, BAKERs MART began with a simple mission: to provide professional-grade baking supplies to everyone. We noticed that high-quality tools were often inaccessible to home bakers, and we set out to bridge that gap.
                  </p>
-                 <p className="text-lg text-muted-foreground leading-relaxed">
+                 <p className="text-lg text-white/70 leading-relaxed">
                      Today, we are a leading supplier of baking essentials, from precision tools to premium ingredients, helping thousands of bakers turn their culinary visions into reality.
                  </p>
              </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-card p-8 rounded-2xl border border-border">
-                  <h3 className="text-2xl font-bold mb-4 text-primary">Our Mission</h3>
-                  <p className="text-muted-foreground">
+              <div className="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
+                  <h3 className="text-2xl font-bold mb-4 text-[#d4af37]">Our Mission</h3>
+                  <p className="text-white/70">
                       To empower bakers of all skill levels with the highest quality tools and ingredients, inspiring creativity and excellence in every bake.
                   </p>
               </div>
-              <div className="bg-card p-8 rounded-2xl border border-border">
-                  <h3 className="text-2xl font-bold mb-4 text-primary">Our Vision</h3>
-                  <p className="text-muted-foreground">
+              <div className="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
+                  <h3 className="text-2xl font-bold mb-4 text-[#d4af37]">Our Vision</h3>
+                  <p className="text-white/70">
                       To be the world's most trusted partner in the baking community, fostering a global culture of sharing, learning, and celebrating the art of baking.
                   </p>
               </div>
