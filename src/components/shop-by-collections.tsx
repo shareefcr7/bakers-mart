@@ -158,7 +158,19 @@ export function ShopByCollections() {
       {/* White Header Section */}
       <div className="bg-white py-16">
         <div className="container mx-auto px-4">
-          <div className="text-center">
+          <div className="text-center relative">
+            {/* Centered Logo Decoration */}
+            <div className="flex justify-center mb-8 animate-float">
+              <div className="relative w-24 h-24 transition-transform duration-500 hover:scale-110 hover:rotate-6" style={{transformStyle: 'preserve-3d'}}>
+                <Image
+                  src="/section-heading-red-white.png"
+                  alt="Decoration"
+                  fill
+                  className="object-contain opacity-40 mix-blend-multiply"
+                />
+              </div>
+            </div>
+
             <AnimatedHeading 
               title="Shop By Collections" 
               className="text-3xl md:text-5xl font-bold text-[#7E0806] mb-4"
