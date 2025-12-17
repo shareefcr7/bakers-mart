@@ -32,7 +32,6 @@ export function WishlistProvider({ children }: { children: ReactNode }) {
         console.error("Failed to parse wishlist", e)
       }
     }
-    }
     setTimeout(() => setIsLoaded(true), 0)
   }, [])
 
