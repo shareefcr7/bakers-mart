@@ -28,7 +28,7 @@ export default function WishlistPage() {
 
       {/* Crystal Clear Banner Image */}
       <div className="container mx-auto px-4 mb-12">
-        <div className="relative w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-white">
+        <div className="relative w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
             <Image
                 src="/wishlist-new-banner.png"
                 alt="Bakersmart Wishlist"
