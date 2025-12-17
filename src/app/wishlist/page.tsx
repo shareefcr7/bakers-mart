@@ -8,6 +8,8 @@ import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { ArrowRight, HeartOff } from "lucide-react"
 
+import Image from "next/image"
+
 import { AnimatedHeading } from "@/components/ui/animated-heading"
 
 export default function WishlistPage() {
@@ -21,6 +23,20 @@ export default function WishlistPage() {
         <div className="container mx-auto px-4 text-center">
             <AnimatedHeading title="My Wishlist" textColor="text-white" />
             <p className="text-white/80 max-w-2xl mx-auto mt-4">Your saved items for future baking masterpieces.</p>
+        </div>
+      </div>
+
+      {/* Crystal Clear Banner Image */}
+      <div className="container mx-auto px-4 mb-12">
+        <div className="relative w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+            <Image
+                src="/wishlist-banner.jpg"
+                alt="Bakersmart Wishlist"
+                fill
+                className="object-cover"
+                quality={100}
+                priority
+            />
         </div>
       </div>
 
