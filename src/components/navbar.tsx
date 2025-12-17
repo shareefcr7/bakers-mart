@@ -5,7 +5,7 @@ import * as React from "react"
 
 import Link from "next/link"
 import Image from "next/image"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { Menu, X, Search, Heart } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -13,10 +13,22 @@ import { useWishlist } from "@/context/wishlist-context"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false)
+  const [searchOpen, setSearchOpen] = React.useState(false)
+  const [searchQuery, setSearchQuery] = React.useState("")
   const pathname = usePathname()
+  const router = useRouter()
   const { items } = useWishlist()
   
   const wishlistCount = items.length
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (searchQuery.trim()) {
+      router.push(`/products?search=${encodeURIComponent(searchQuery.trim())}`)
+      setSearchOpen(false)
+      setSearchQuery("")
+    }
+  }
 
   const links = [
     { href: "/", label: "Home" },
@@ -58,9 +70,39 @@ export function Navbar() {
 
         {/* Right Icons */}
         <div className="flex items-center gap-4">
-          <Link href="/products" className="text-[#f3e5b5] hover:text-white transition-colors" aria-label="Search Products">
-            <Search className="w-5 h-5" />
-          </Link>
+          {/* Search */}
+          <div className="relative">
+            {!searchOpen ? (
+              <button 
+                onClick={() => setSearchOpen(true)}
+                className="text-[#f3e5b5] hover:text-white transition-colors" 
+                aria-label="Search Products"
+              >
+                <Search className="w-5 h-5" />
+              </button>
+            ) : (
+              <form onSubmit={handleSearch} className="flex items-center gap-2">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search products..."
+                  className="w-48 px-3 py-1.5 text-sm rounded-md bg-white/10 border border-[#f3e5b5]/30 text-white placeholder:text-white/50 focus:outline-none focus:border-[#f3e5b5]"
+                  autoFocus
+                />
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSearchOpen(false)
+                    setSearchQuery("")
+                  }}
+                  className="text-[#f3e5b5] hover:text-white"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </form>
+            )}
+          </div>
 
           <Link href="/wishlist" className="relative text-[#f3e5b5] hover:text-white transition-colors">
             <Heart className="w-5 h-5" />
