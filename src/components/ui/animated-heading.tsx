@@ -22,7 +22,7 @@ export function AnimatedHeading({ title, className, textColor = "text-foreground
         className="relative w-[150px] h-[120px] md:w-[200px] md:h-[140px] flex-shrink-0"
       >
         <Image
-          src="/wishlist-new-banner.png"
+          src="/bakersmart-logo-gold-red.jpg"
           alt="Bakersmart Logo"
           fill
           className="object-contain"
@@ -49,7 +49,7 @@ export function AnimatedHeading({ title, className, textColor = "text-foreground
         className="relative w-[150px] h-[120px] md:w-[200px] md:h-[140px] flex-shrink-0"
       >
         <Image
-          src="/wishlist-new-banner.png"
+          src="/bakersmart-logo-gold-red.jpg"
           alt="Bakersmart Logo"
           fill
           className="object-contain"
