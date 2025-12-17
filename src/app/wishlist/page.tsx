@@ -70,34 +70,38 @@ export default function WishlistPage() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center gap-8">
             {/* Left Logo */}
-            <div className="hidden md:block w-24 h-24 relative flex-shrink-0">
+            <div className="hidden md:block w-24 h-24 relative flex-shrink-0 animate-float">
               <Image
                 src="/section-heading-red-white.png"
                 alt="Logo"
                 fill
-                className="object-contain"
+                className="object-contain transition-transform duration-500 hover:scale-110 hover:rotate-12"
               />
             </div>
 
-            {/* Banner Image */}
-            <div className="relative w-full max-w-4xl h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-              <Image
-                src="/wishlist-new-banner.png"
-                alt="Bakersmart Wishlist"
-                fill
-                className="object-contain"
-                quality={100}
-                priority
-              />
+            {/* Banner Image with Hover Effects */}
+            <div className="relative w-full max-w-4xl h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-2xl border border-white/10 group cursor-pointer">
+              <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-105">
+                <Image
+                  src="/wishlist-new-banner.png"
+                  alt="Bakersmart Wishlist"
+                  fill
+                  className="object-contain transition-all duration-700 group-hover:brightness-110"
+                  quality={100}
+                  priority
+                />
+              </div>
+              {/* Subtle gradient overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-white/0 opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
             </div>
 
             {/* Right Logo */}
-            <div className="hidden md:block w-24 h-24 relative flex-shrink-0">
+            <div className="hidden md:block w-24 h-24 relative flex-shrink-0 animate-float" style={{animationDelay: '0.5s'}}>
               <Image
                 src="/section-heading-red-white.png"
                 alt="Logo"
                 fill
-                className="object-contain"
+                className="object-contain transition-transform duration-500 hover:scale-110 hover:-rotate-12"
               />
             </div>
           </div>
