@@ -33,13 +33,16 @@ export function Hero() {
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="max-w-6xl mx-auto"
         >
-          {/* Animated Heading Replacement */}
-          <AnimatedHeading 
-            title="" 
-            textColor="text-white" 
-            className="text-4xl md:text-6xl lg:text-7xl mb-8 leading-tight py-8"
-            showLeftIcon={false}
-          />
+          {/* Main Heading */}
+          <motion.h1 
+            className="text-5xl md:text-7xl lg:text-9xl font-bold text-white mb-8 tracking-tighter leading-[0.9] drop-shadow-2xl"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 1, ease: "easeOut" }}
+          >
+            Taste the <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] to-[#f3e5b5]" style={{ fontFamily: 'Playfair Display, serif' }}>Luxury</span> <br />
+            in Every Bite
+          </motion.h1>
 
           <motion.p 
             className="text-lg md:text-2xl text-white/80 max-w-2xl mx-auto mb-12 font-light leading-relaxed"
