@@ -41,7 +41,7 @@ function ProductContent() {
                             className={cn(
                                 "flex-shrink-0 snap-start px-5 py-2 lg:py-3 text-sm lg:text-base font-medium transition-all rounded-full lg:rounded-r-3xl lg:rounded-l-none border lg:border-0 lg:border-l-4 whitespace-nowrap",
                                 activeCategory === cat 
-                                    ? "bg-primary text-primary-foreground border-primary lg:border-primary-foreground/20 lg:shadow-sm lg:translate-x-1" 
+                                    ? "bg-primary text-[#f3e5b5] border-primary lg:border-primary-foreground/20 lg:shadow-sm lg:translate-x-1" 
                                     : "bg-secondary/20 lg:bg-transparent border-transparent text-muted-foreground hover:bg-secondary/40 lg:hover:pl-6"
                             )}
                         >
