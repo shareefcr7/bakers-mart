@@ -65,8 +65,8 @@ export default function WishlistPage() {
         )}
       </div>
 
-      {/* 3rd Section: Banner Image with Golden Cream Background */}
-      <div className="bg-[#f3e5b5] py-12">
+      {/* 3rd Section: Banner Image with White Background */}
+      <div className="bg-white py-12">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center gap-8">
             {/* Left Logo */}
