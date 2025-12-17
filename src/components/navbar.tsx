@@ -45,16 +45,21 @@ export function Navbar() {
         isScrolled ? "h-[70px]" : "h-[110px]"
       )}>
         <Link href="/" className="h-full py-1 flex items-center">
-          <Image 
-            src="/navbar-logo-final.png" 
-            alt="Bakery Mart" 
-            width={300} 
-            height={100} 
+          <div 
             className={cn(
-              "w-auto object-contain transition-all duration-300",
-              isScrolled ? "h-[50px] md:h-[60px]" : "h-[70px] md:h-[90px]"
+              "bg-[#f3e5b5] transition-all duration-300 aspect-[3.5/1]",
+               isScrolled ? "h-[50px] md:h-[60px]" : "h-[70px] md:h-[90px]"
             )}
-            priority
+            style={{
+              maskImage: "url('/navbar-logo-final.png')",
+              WebkitMaskImage: "url('/navbar-logo-final.png')",
+              maskSize: "contain",
+              WebkitMaskSize: "contain",
+              maskRepeat: "no-repeat",
+              WebkitMaskRepeat: "no-repeat",
+              maskPosition: "left",
+              WebkitMaskPosition: "left",
+            }}
           />
         </Link>
 
@@ -127,12 +132,18 @@ export function Navbar() {
             <div className="flex items-center justify-between py-4 pr-5 pl-5 border-b border-white/20 bg-[#7E0806]">
                  {/* Left: Logo */}
                  <Link href="/" onClick={() => setIsOpen(false)} className="transition-opacity hover:opacity-80">
-                    <Image 
-                        src="/navbar-logo-final.png" 
-                        alt="Bakery Mart" 
-                        width={200} 
-                        height={70} 
-                        className="h-[70px] w-auto object-contain object-left"
+                    <div 
+                        className="bg-[#f3e5b5] aspect-[3.5/1] h-[70px]"
+                        style={{
+                            maskImage: "url('/navbar-logo-final.png')",
+                            WebkitMaskImage: "url('/navbar-logo-final.png')",
+                            maskSize: "contain",
+                            WebkitMaskSize: "contain",
+                            maskRepeat: "no-repeat",
+                            WebkitMaskRepeat: "no-repeat",
+                            maskPosition: "left",
+                            WebkitMaskPosition: "left",
+                        }}
                     />
                  </Link>
 
