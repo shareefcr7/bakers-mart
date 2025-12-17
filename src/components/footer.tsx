@@ -45,7 +45,7 @@ export function Footer() {
           </div>
         </div>
         
-        <div className="border-t border-neutral-200 mt-12 pt-8 bg-white -mx-4 px-4 pb-8">
+        <div className="border-t border-neutral-200 mt-12 pt-8 -mx-4 px-4 pb-8">
         <div className="flex items-center justify-center gap-6">
           {/* Left Logo */}
           <Image
