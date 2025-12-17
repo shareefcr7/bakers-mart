@@ -5,7 +5,7 @@ import { Quote } from "lucide-react"
 
 export function Testimonials() {
   return (
-    <section className="py-20 bg-black">
+    <section className="py-20 bg-black text-[#f3e5b5]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold mb-4 font-sans text-white">What Our Bakers Say</h2>

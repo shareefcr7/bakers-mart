@@ -16,13 +16,13 @@ export default function WishlistPage() {
   const { items } = useWishlist()
 
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-black text-[#f3e5b5]">
       <Navbar />
       
-      <div className="bg-black py-12 mb-8 border-b border-white/10">
+      <div className="bg-black py-12 mb-8 border-b border-[#f3e5b5]/10">
         <div className="container mx-auto px-4 text-center">
-            <AnimatedHeading title="My Wishlist" textColor="text-white" />
-            <p className="text-white/80 max-w-2xl mx-auto mt-4">Your saved items for future baking masterpieces.</p>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 font-serif text-[#f3e5b5]">Your Wishlist</h1>
+            <p className="text-[#f3e5b5]/80">Save your favorite items for later</p>
         </div>
       </div>
 

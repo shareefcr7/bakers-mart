@@ -10,7 +10,7 @@ const icons = {
 
 export function Features() {
   return (
-    <section className="py-20 bg-black border-y border-white/10">
+    <section className="py-20 bg-black border-y border-[#f3e5b5]/10 text-[#f3e5b5]">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {businessHighlights.map((highlight) => {

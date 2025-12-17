@@ -9,7 +9,7 @@ import { AnimatedHeading } from "@/components/ui/animated-heading"
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-black text-[#f3e5b5]">
       <Navbar />
       
       <section className="relative py-24 md:py-32 bg-white">

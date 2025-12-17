@@ -82,7 +82,7 @@ function ProductContent() {
 
 export default function ProductsPage() {
   return (
-    <main className="min-h-screen bg-[#fff5f5]">
+    <main className="min-h-screen bg-black text-[#f3e5b5]">
       <Navbar />
       
       <div className="relative py-24 mb-8 bg-black">
@@ -98,8 +98,8 @@ export default function ProductsPage() {
             <div className="absolute inset-0 bg-black/60" />
         </div> */}
         <div className="container mx-auto px-4 relative z-10">
-            <AnimatedHeading title="Our Products" textColor="text-white" />
-            <p className="text-white/80 max-w-2xl mx-auto text-center mt-4">Explore our extensive collection of professional baking supplies.</p>
+            <AnimatedHeading title="Our Products" textColor="text-[#f3e5b5]" />
+            <p className="text-[#f3e5b5]/80 max-w-2xl mx-auto text-center mt-4 text-lg">Explore our extensive collection of professional baking supplies.</p>
         </div>
       </div>
 
