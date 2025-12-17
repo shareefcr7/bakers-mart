@@ -27,12 +27,12 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center md:text-left">
+      <div className="relative z-10 container mx-auto px-4 text-center md:text-left h-full flex flex-col justify-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          className="max-w-6xl mx-auto md:mx-0"
+          className="max-w-3xl mx-auto md:mx-0 md:pl-8 lg:pl-16 pt-12"
         >
           {/* Main Heading */}
           {/* Main Heading Removed */}
@@ -47,7 +47,7 @@ export function Hero() {
           </FadeIn>
           
           <motion.div 
-            className="flex flex-col sm:flex-row gap-6 justify-center md:justify-start items-center"
+            className="flex flex-col sm:flex-row gap-6 justify-center md:justify-start items-center mt-12"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
