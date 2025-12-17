@@ -65,7 +65,7 @@ function ProductContent() {
                 {searchQuery && (
                   <div className="mb-6 p-4 bg-[#f3e5b5]/10 border border-[#f3e5b5]/30 rounded-lg">
                     <p className="text-[#f3e5b5]">
-                      Showing results for: <span className="font-bold">"{searchQuery}"</span>
+                      Showing results for: <span className="font-bold">&quot;{searchQuery}&quot;</span>
                       {filteredProducts.length === 0 && " - No products found"}
                     </p>
                   </div>
