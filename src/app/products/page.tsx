@@ -18,8 +18,7 @@ function ProductContent() {
   
   useEffect(() => {
      if(searchParams.get("category")) {
-         // eslint-disable-next-line react-hooks/exhaustive-deps
-         setActiveCategory(searchParams.get("category")!)
+         setTimeout(() => setActiveCategory(searchParams.get("category")!), 0)
      }
   }, [searchParams])
 
