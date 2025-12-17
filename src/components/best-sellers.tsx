@@ -14,7 +14,7 @@ export function BestSellers() {
         <div className="text-center mb-12">
           <AnimatedHeading 
             title="Best Sellers" 
-            className="text-[#f3e5b5]"
+            className="text-[#7E0806]"
           />
           <p className="text-neutral-400 max-w-2xl mx-auto mt-4">
             Our most popular tools and ingredients, trusted by professional bakers.
