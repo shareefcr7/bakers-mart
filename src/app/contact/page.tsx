@@ -3,6 +3,7 @@
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { Mail, Phone, MapPin, Send } from "lucide-react"
+import Image from "next/image"
 
 import { AnimatedHeading } from "@/components/ui/animated-heading"
 import { FadeIn } from "@/components/ui/fade-in"
@@ -12,20 +13,31 @@ export default function ContactPage() {
     <main className="min-h-screen bg-black text-[#f3e5b5]">
       <Navbar />
       
-      <section className="relative py-24 md:py-32 bg-white">
-        {/* Background Image - Removed for White BG request */}
-        {/* <div className="absolute inset-0 z-0">
-            <Image
-                src="/section-header-bg.png"
-                alt="Contact Us"
-                fill
-                className="object-cover"
-                priority
-            />
-            <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
-        </div> */}
-
+      <section className="relative py-24 md:py-32 bg-white overflow-hidden">
         <div className="container mx-auto px-4 text-center relative z-10">
+          {/* 3D Animated Cake Decorations */}
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 hidden lg:block animate-float">
+            <div className="relative w-32 h-32 transform-gpu transition-transform duration-700 hover:scale-110 hover:rotate-12" style={{transformStyle: 'preserve-3d'}}>
+              <Image
+                src="/section-heading-red-white.png"
+                alt="Cake Decoration"
+                fill
+                className="object-contain opacity-30 mix-blend-multiply"
+              />
+            </div>
+          </div>
+          
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:block animate-float" style={{animationDelay: '0.5s'}}>
+            <div className="relative w-32 h-32 transform-gpu transition-transform duration-700 hover:scale-110 hover:-rotate-12" style={{transformStyle: 'preserve-3d'}}>
+              <Image
+                src="/section-heading-red-white.png"
+                alt="Cake Decoration"
+                fill
+                className="object-contain opacity-30 mix-blend-multiply"
+              />
+            </div>
+          </div>
+
           <AnimatedHeading title="Contact Us" textColor="text-[#7E0806]" />
           <FadeIn delay={0.2}><p className="text-[#7E0806]/80 mt-4 text-lg md:text-xl font-medium max-w-2xl mx-auto">We&apos;d love to hear from you. Get in touch with us.</p></FadeIn>
         </div>

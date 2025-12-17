@@ -92,6 +92,23 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Floating Animation for 3D Cake Decorations */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
 /* Responsive Typography - Mobile Friendly */
 @media (max-width: 640px) {
   body {

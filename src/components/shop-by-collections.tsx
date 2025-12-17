@@ -154,18 +154,24 @@ const collections = [
 
 export function ShopByCollections() {
   return (
-    <section className="py-24 bg-neutral-950">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <AnimatedHeading 
-            title="Shop By Collections" 
-            className="text-3xl md:text-5xl font-bold text-white mb-4"
-          />
-          <p className="text-neutral-400 max-w-2xl mx-auto text-lg mt-4">
-            Curated selections of our finest cakes and baking essentials.
-          </p>
+    <section className="bg-neutral-950">
+      {/* White Header Section */}
+      <div className="bg-white py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <AnimatedHeading 
+              title="Shop By Collections" 
+              className="text-3xl md:text-5xl font-bold text-[#7E0806] mb-4"
+            />
+            <p className="text-[#7E0806]/80 max-w-2xl mx-auto text-lg mt-4">
+              Curated selections of our finest cakes and baking essentials.
+            </p>
+          </div>
         </div>
+      </div>
 
+      {/* Collections Grid */}
+      <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
           {collections.map((item, index) => (
             <motion.div
