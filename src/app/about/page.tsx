@@ -10,9 +10,9 @@ export default function AboutPage() {
       <Navbar />
       
       {/* Header */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
+      <section className="relative py-24 md:py-32 bg-white">
+        {/* Background Image - Removed for White BG request */}
+        {/* <div className="absolute inset-0 z-0">
             <Image
                 src="/section-header-bg.png"
                 alt="About Us"
@@ -21,11 +21,11 @@ export default function AboutPage() {
                 priority
             />
             <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
-        </div>
+        </div> */}
 
         <div className="container mx-auto px-4 text-center relative z-10">
-          <AnimatedHeading title="About Us" textColor="text-white" />
-          <p className="text-xl text-white/90 mt-4 max-w-2xl mx-auto font-medium">The story behind the sweetness.</p>
+          <AnimatedHeading title="About Us" textColor="text-[#7E0806]" />
+          <p className="text-xl text-[#7E0806]/90 mt-4 max-w-2xl mx-auto font-medium">The story behind the sweetness.</p>
         </div>
       </section>
 
