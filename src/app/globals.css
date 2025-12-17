@@ -86,4 +86,218 @@
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
+  font-size: 16px;
+  line-height: 1.6;
+  /* Smooth transitions for all elements */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Responsive Typography - Mobile Friendly */
+@media (max-width: 640px) {
+  body {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 1.75rem !important;
+    line-height: 1.2 !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+    line-height: 1.3 !important;
+  }
+
+  h3 {
+    font-size: 1.25rem !important;
+    line-height: 1.4 !important;
+  }
+
+  p {
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
+/* Smooth Transitions - All Interactive Elements */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* Cinematic Lighting Effects */
+.cinematic-shadow {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cinematic-glow {
+  box-shadow: 0 0 20px rgba(243, 229, 181, 0.3), 0 0 40px rgba(243, 229, 181, 0.1);
+}
+
+/* Smooth Color Grading - Gradient Overlays */
+.gradient-overlay-dark {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+.gradient-overlay-light {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.3) 100%);
+}
+
+/* Professional Transitions */
+.transition-fast {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-slow {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Remove transition for specific cases to avoid conflicts */
+*:where(.no-transition, .no-transition *) {
+  transition: none !important;
+}
+
+/* Improve readability on all screen sizes */
+p,
+li,
+span {
+  max-width: 75ch;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Advanced Fade Animations - Keyframes with 3D Transform */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) translateY(20px) rotateX(10deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: perspective(1000px) translateY(0) rotateX(0deg);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) translateY(30px) rotateX(15deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: perspective(1000px) translateY(0) rotateX(0deg);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) translateY(-30px) rotateX(-15deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: perspective(1000px) translateY(0) rotateX(0deg);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: perspective(1000px) translateY(0) rotateX(0deg);
+  }
+
+  to {
+    opacity: 0;
+    transform: perspective(1000px) translateY(-20px) rotateX(-10deg);
+  }
+}
+
+/* Apply fade animations to text elements - 0.7s duration */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  animation: fadeInUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity: 0;
+  animation-delay: 0.1s;
+  transform-style: preserve-3d;
+}
+
+p {
+  animation: fadeIn 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity: 0;
+  animation-delay: 0.2s;
+  transform-style: preserve-3d;
+}
+
+/* Utility classes for manual control - 0.7s duration */
+.fade-in {
+  animation: fadeIn 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.fade-in-down {
+  animation: fadeInDown 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Stagger animation delays for multiple elements */
+*:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+*:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+*:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+*:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+*:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+/* Disable animations if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    opacity: 1;
+    animation: none;
+  }
 }
