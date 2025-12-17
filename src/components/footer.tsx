@@ -45,7 +45,7 @@ export function Footer() {
           </div>
         </div>
         
-        <div className="border-t border-[#f3e5b5]/10 mt-12 pt-8 bg-black -mx-4 px-4 pb-8">
+        <div className="border-t border-neutral-200 mt-12 pt-8 bg-white -mx-4 px-4 pb-8">
         <div className="flex items-center justify-center gap-6">
           {/* Left Logo */}
           <div className="relative w-[100px] h-[100px] opacity-50 hover:opacity-100 transition-opacity">
@@ -57,7 +57,7 @@ export function Footer() {
             />
           </div>
           
-          <p className="text-[#f3e5b5]/60 text-sm">© 2025 BAKERs MART. All rights reserved.</p>
+          <p className="text-neutral-600 text-sm">© 2025 BAKERs MART. All rights reserved.</p>
           
           {/* Right Logo */}
           <div className="relative w-[100px] h-[100px] opacity-50 hover:opacity-100 transition-opacity">
