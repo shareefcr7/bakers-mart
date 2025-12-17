@@ -14,7 +14,7 @@ export default function AboutPage() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
             <Image
-                src="/about-company.jpg"
+                src="/section-header-bg.png"
                 alt="About Us"
                 fill
                 className="object-cover"

@@ -16,7 +16,7 @@ export default function ContactPage() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
             <Image
-                src="/contact-bg.jpg"
+                src="/section-header-bg.png"
                 alt="Contact Us"
                 fill
                 className="object-cover"
