@@ -42,13 +42,13 @@ export function Navbar() {
     )}>
       <div className={cn(
         "container mx-auto px-4 flex items-center justify-between transition-all duration-300",
-        isScrolled ? "h-[70px]" : "h-[110px]"
+        isScrolled ? "h-[110px]" : "h-[150px]"
       )}>
         <Link href="/" className="h-full py-1 flex items-center">
           <div 
             className={cn(
               "bg-[#f3e5b5] transition-all duration-300 aspect-[3.5/1]",
-               isScrolled ? "h-[50px] md:h-[60px]" : "h-[70px] md:h-[90px]"
+               isScrolled ? "h-[70px] md:h-[90px]" : "h-[90px] md:h-[130px]"
             )}
             style={{
               maskImage: "url('/navbar-logo-final.png')",
