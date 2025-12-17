@@ -6,6 +6,7 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 
 import { AnimatedHeading } from "@/components/ui/animated-heading"
+import { FadeIn } from "@/components/ui/fade-in"
 
 export function Hero() {
   return (
@@ -34,25 +35,24 @@ export function Hero() {
           className="max-w-6xl mx-auto"
         >
           {/* Main Heading */}
-          <motion.h1 
-            className="text-5xl md:text-7xl lg:text-9xl font-bold text-white mb-8 tracking-tighter leading-[0.9] drop-shadow-2xl"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 1, ease: "easeOut" }}
-          >
-            Taste the <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] to-[#f3e5b5]" style={{ fontFamily: 'Playfair Display, serif' }}>Luxury</span> <br />
-            in Every Bite
-          </motion.h1>
+          {/* Main Heading - Shade In & Transparent Look */}
+          <FadeIn delay={0.4}>
+            <h1 
+              className="text-5xl md:text-7xl lg:text-9xl font-bold text-white/90 mb-8 tracking-tighter leading-[0.9] drop-shadow-2xl mix-blend-overlay"
+            >
+              Taste the <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] to-[#f3e5b5]" style={{ fontFamily: 'Playfair Display, serif' }}>Luxury</span> <br />
+              in Every Bite
+            </h1>
+          </FadeIn>
 
-          <motion.p 
-            className="text-lg md:text-2xl text-white/80 max-w-2xl mx-auto mb-12 font-light leading-relaxed"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 1 }}
-          >
-            Experience the finest selection of handcrafted cakes and pastries, 
-            baked with passion and perfected for your special moments.
-          </motion.p>
+          <FadeIn delay={0.6}>
+            <p 
+              className="text-lg md:text-2xl text-white/70 max-w-2xl mx-auto mb-12 font-light leading-relaxed"
+            >
+              Experience the finest selection of handcrafted cakes and pastries, 
+              baked with passion and perfected for your special moments.
+            </p>
+          </FadeIn>
           
           <motion.div 
             className="flex flex-col sm:flex-row gap-6 justify-center items-center"
