@@ -36,10 +36,9 @@ export function Hero() {
         >
           {/* Main Heading */}
           {/* Main Heading - Shade In & Transparent Look */}
-          {/* Main Heading - Shade In & Transparent Look */}
           <FadeIn delay={0.4}>
             <h1 
-              className="text-4xl md:text-6xl lg:text-8xl font-bold text-white/90 mb-8 tracking-tighter leading-[0.9] drop-shadow-2xl mix-blend-overlay"
+              className="text-3xl md:text-5xl lg:text-7xl font-bold text-white/90 mb-6 tracking-tighter leading-[0.9] drop-shadow-2xl mix-blend-overlay"
             >
               Taste the <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] to-[#f3e5b5]" style={{ fontFamily: 'Playfair Display, serif' }}>Luxury</span> <br />
               in Every Bite
@@ -48,7 +47,7 @@ export function Hero() {
 
           <FadeIn delay={0.6}>
             <p 
-              className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto md:mx-0 mb-12 font-light leading-relaxed"
+              className="text-base md:text-lg text-white/70 max-w-xl mx-auto md:mx-0 mb-8 font-light leading-relaxed"
             >
               Experience the finest selection of handcrafted cakes and pastries, 
               baked with passion and perfected for your special moments.
