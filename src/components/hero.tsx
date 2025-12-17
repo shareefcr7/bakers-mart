@@ -22,20 +22,7 @@ export function Hero() {
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
         
-        {/* Extra Floating Cake Image - Right Side Animation */}
-         <motion.div
-            initial={{ x: 100, opacity: 0, rotate: 20 }}
-            animate={{ x: 0, opacity: 1, rotate: 0 }}
-            transition={{ duration: 1.5, delay: 0.5, type: "spring" }}
-            className="absolute right-0 top-1/2 -translate-y-1/2 w-[300px] h-[300px] hidden lg:block opacity-80 pointer-events-none z-0"
-         >
-            <Image 
-                src="/hero-bg-red.png" 
-                alt="Floating Cake" 
-                fill 
-                className="object-contain drop-shadow-2xl opacity-60 mix-blend-overlay"
-            />
-         </motion.div>
+
       </div>
 
       {/* Content */}
@@ -46,32 +33,12 @@ export function Hero() {
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="max-w-6xl mx-auto"
         >
-            {/* Glassmorphism Badge */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1, y: [0, -10, 0] }}
-            transition={{ 
-                delay: 0.2, 
-                duration: 0.5,
-                y: {
-                    repeat: Infinity,
-                    duration: 3,
-                    ease: "easeInOut"
-                }
-            }}
-            className="inline-flex items-center gap-2 py-2 px-6 border border-white/20 rounded-full bg-white/5 backdrop-blur-md mb-8 shadow-2xl"
-          >
-            <span className="w-2 h-2 rounded-full bg-[#d4af37] animate-pulse" />
-            <span className="text-white/90 text-sm font-medium tracking-[0.2em] uppercase">
-             Artisan Bakery Since 2024
-            </span>
-          </motion.div>
-
           {/* Animated Heading Replacement */}
           <AnimatedHeading 
             title="Taste the Luxury in Every Bite" 
             textColor="text-white" 
             className="text-4xl md:text-6xl lg:text-7xl mb-8 leading-tight py-8"
+            showLeftIcon={false}
           />
 
           <motion.p 

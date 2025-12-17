@@ -8,12 +8,23 @@ interface AnimatedHeadingProps {
   title: string
   className?: string
   textColor?: string
+  showLeftIcon?: boolean
+  showRightIcon?: boolean
+  iconSrc?: string
 }
 
-export function AnimatedHeading({ title, className, textColor = "text-foreground" }: AnimatedHeadingProps) {
+export function AnimatedHeading({ 
+  title, 
+  className, 
+  textColor = "text-foreground",
+  showLeftIcon = true,
+  showRightIcon = true,
+  iconSrc = "/section-heading-red-white.png"
+}: AnimatedHeadingProps) {
   return (
     <div className={cn("flex items-center justify-center gap-4 md:gap-8 overflow-hidden py-4", className)}>
       {/* Left Logo */}
+      {showLeftIcon && (
       <motion.div
         initial={{ x: -100, opacity: 0, rotate: -180 }}
         whileInView={{ x: 0, opacity: 1, rotate: 0 }}
@@ -22,12 +33,13 @@ export function AnimatedHeading({ title, className, textColor = "text-foreground
         className="relative w-[150px] h-[120px] md:w-[200px] md:h-[140px] flex-shrink-0"
       >
         <Image
-          src="/section-heading-red-white.png"
+          src={iconSrc}
           alt="Bakersmart Logo"
           fill
           className="object-contain"
         />
       </motion.div>
+      )}
 
       {/* Title */}
       <motion.h1 
@@ -41,6 +53,7 @@ export function AnimatedHeading({ title, className, textColor = "text-foreground
       </motion.h1>
 
       {/* Right Logo */}
+      {showRightIcon && (
       <motion.div
         initial={{ x: 100, opacity: 0, rotate: 180 }}
         whileInView={{ x: 0, opacity: 1, rotate: 0 }}
@@ -49,12 +62,13 @@ export function AnimatedHeading({ title, className, textColor = "text-foreground
         className="relative w-[150px] h-[120px] md:w-[200px] md:h-[140px] flex-shrink-0"
       >
         <Image
-          src="/section-heading-red-white.png"
+          src={iconSrc}
           alt="Bakersmart Logo"
           fill
           className="object-contain"
         />
       </motion.div>
+      )}
     </div>
   )
 }
