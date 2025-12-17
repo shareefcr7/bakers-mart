@@ -48,26 +48,24 @@ export function Footer() {
         <div className="border-t border-neutral-200 mt-12 pt-8 bg-white -mx-4 px-4 pb-8">
         <div className="flex items-center justify-center gap-6">
           {/* Left Logo */}
-          <div className="relative w-[100px] h-[100px]">
-            <Image
-              src="/section-heading-logo.png"
-              alt="Logo"
-              fill
-              className="object-contain"
-            />
-          </div>
+          <Image
+            src="/section-heading-logo.png"
+            alt="Logo"
+            width={100}
+            height={100}
+            className="object-contain"
+          />
           
           <p className="text-neutral-600 text-sm">© 2025 BAKERs MART. All rights reserved.</p>
           
           {/* Right Logo */}
-          <div className="relative w-[100px] h-[100px]">
-            <Image
-              src="/section-heading-logo.png"
-              alt="Logo"
-              fill
-              className="object-contain"
-            />
-          </div>
+          <Image
+            src="/section-heading-logo.png"
+            alt="Logo"
+            width={100}
+            height={100}
+            className="object-contain"
+          />
         </div>
       </div>
       </div>
