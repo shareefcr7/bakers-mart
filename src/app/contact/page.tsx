@@ -12,9 +12,9 @@ export default function ContactPage() {
     <main className="min-h-screen bg-black">
       <Navbar />
       
-      <section className="relative py-24 md:py-32 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
+      <section className="relative py-24 md:py-32 bg-white">
+        {/* Background Image - Removed for White BG request */}
+        {/* <div className="absolute inset-0 z-0">
             <Image
                 src="/section-header-bg.png"
                 alt="Contact Us"
@@ -23,11 +23,11 @@ export default function ContactPage() {
                 priority
             />
             <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
-        </div>
+        </div> */}
 
         <div className="container mx-auto px-4 text-center relative z-10">
-          <AnimatedHeading title="Contact Us" textColor="text-white" />
-          <p className="text-white/90 mt-4 text-lg md:text-xl font-medium max-w-2xl mx-auto">We'd love to hear from you. Get in touch with us.</p>
+          <AnimatedHeading title="Contact Us" textColor="text-[#7E0806]" />
+          <p className="text-[#7E0806]/80 mt-4 text-lg md:text-xl font-medium max-w-2xl mx-auto">We'd love to hear from you. Get in touch with us.</p>
         </div>
       </section>
 
