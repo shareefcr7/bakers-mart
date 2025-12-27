@@ -11,63 +11,64 @@ export function Hero() {
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-neutral-900 via-stone-900 to-neutral-950">
       {/* Background Image - 8K Premium */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 bg-[#700c0d]">
         <Image
-          src="/hero-bg-premium-red.jpg"
+          src="/hero-bg-bakes-mart-vibrant.png"
           alt="Premium Cake Showcase"
           fill
-          className="object-cover scale-105 animate-slow-zoom" 
+          className="object-contain md:object-cover scale-100 md:scale-105 animate-slow-zoom object-top md:object-center" 
           priority
           quality={100}
         />
-        {/* Premium Gradient Overlay - Optimized for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
+        {/* Star Hider Overlay */}
+        <div className="absolute bottom-0 right-0 w-24 h-24 bg-[#700c0d]" />
+        {/* Premium Gradient Overlay - Dark Theme for Red Velvet Background */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent md:from-black/85 md:via-black/50 opacity-40 md:opacity-100" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/60" />
       </div>
 
 
 
       {/* Content - Optimized Text Position */}
-      <div className="relative z-10 container mx-auto px-4 h-full flex items-center">
+      <div className="relative z-10 container mx-auto px-4 h-full flex items-center md:items-top">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
-          className="max-w-2xl ml-0 md:ml-8 lg:ml-16 mt-24"
+          className="max-w-2xl ml-0 md:ml-8 lg:ml-16 mt-0 md:mt-24"
         >
 
-
           <FadeIn delay={0.8}>
-            <div className="h-1 w-24 bg-gradient-to-r from-[#7E0806] to-amber-600 rounded-full mb-8 shadow-lg shadow-[#7E0806]/50" />
+            <div className="h-1 w-20 md:w-24 bg-gradient-to-r from-[#7E0806] to-amber-600 rounded-full mb-6 md:mb-8 shadow-lg shadow-[#7E0806]/50" />
           </FadeIn>
 
           <FadeIn delay={0.9}>
-            <p className="text-lg md:text-xl text-white/90 max-w-xl mb-10 font-light leading-relaxed drop-shadow-lg">
+            <p className="text-base md:text-xl text-white/90 max-w-xl mb-8 md:mb-10 font-light leading-relaxed drop-shadow-lg pr-4 md:pr-0">
               Experience the finest selection of handcrafted cakes and pastries, 
               baked with passion and perfected for your special moments.
             </p>
           </FadeIn>
           
           <motion.div 
-            className="flex flex-col sm:flex-row gap-5 items-start"
+            className="flex flex-col sm:flex-row gap-4 md:gap-5 items-stretch sm:items-start"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1, duration: 0.8 }}
           >
             <Link 
               href="/products" 
-              className="group relative px-12 py-5 bg-gradient-to-r from-[#7E0806] to-[#9a1a18] text-white font-bold text-lg rounded-full overflow-hidden shadow-2xl shadow-[#7E0806]/40 transition-all hover:scale-105 hover:shadow-[#7E0806]/60 border border-white/10"
+              className="group relative px-8 md:px-12 py-4 md:py-5 bg-gradient-to-r from-[#7E0806] to-[#9a1a18] text-white font-bold text-base md:text-lg rounded-full overflow-hidden shadow-2xl shadow-[#7E0806]/40 transition-all hover:scale-105 hover:shadow-[#7E0806]/60 border border-white/10 text-center"
             >
-              <span className="relative z-10 flex items-center justify-center gap-3">
+              <span className="relative z-10 flex items-center justify-center gap-2 md:gap-3">
                 Explore Collection
-                <svg className="w-5 h-5 transition-transform group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                <svg className="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-[#9a1a18] to-[#7E0806] opacity-0 group-hover:opacity-100 transition-opacity" />
             </Link>
             
             <Link 
               href="/about" 
-              className="px-12 py-5 bg-white/5 border-2 border-white/30 text-white font-semibold text-lg rounded-full hover:bg-white/15 hover:border-white/60 transition-all backdrop-blur-md shadow-xl"
+              className="px-8 md:px-12 py-4 md:py-5 bg-white/5 border-2 border-white/30 text-white font-semibold text-base md:text-lg rounded-full hover:bg-white/15 hover:border-white/60 transition-all backdrop-blur-md shadow-xl text-center"
             >
               Our Story
             </Link>
@@ -75,9 +76,9 @@ export function Hero() {
         </motion.div>
       </div>
 
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator - Hidden on Mobile */}
       <motion.div 
-        className="absolute bottom-12 left-8 md:left-16 z-20 text-white/70 flex flex-col items-center gap-2"
+        className="hidden md:flex absolute bottom-12 left-8 md:left-16 z-20 text-white/70 flex-col items-center gap-2"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2, duration: 1 }}

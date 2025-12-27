@@ -1,0 +1,39 @@
+
+import { NextResponse } from 'next/server';
+import { getProducts, addProduct, Product } from '@/lib/db';
+
+export async function GET() {
+  try {
+    const products = getProducts();
+    return NextResponse.json(products);
+  } catch (error) {
+    return NextResponse.json({ error: 'Failed to fetch products' }, { status: 500 });
+  }
+}
+
+export async function POST(request: Request) {
+  try {
+    const body = await request.json();
+    
+    // Basic validation
+    if (!body.name || !body.price) {
+        return NextResponse.json({ error: 'Name and Price are required' }, { status: 400 });
+    }
+
+    const newProduct: Product = {
+      id: Date.now().toString(), // Simple ID generation
+      name: body.name,
+      description: body.description || '',
+      price: body.price,
+      category: body.category || 'Uncategorized',
+      image: body.image || '/images/placeholder.png', // Fallback image
+      isBestSeller: body.isBestSeller || false,
+      isNew: body.isNew || false,
+    };
+
+    const added = addProduct(newProduct);
+    return NextResponse.json(added, { status: 201 });
+  } catch (error) {
+    return NextResponse.json({ error: 'Failed to create product' }, { status: 500 });
+  }
+}

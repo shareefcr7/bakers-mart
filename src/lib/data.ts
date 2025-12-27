@@ -35,7 +35,7 @@ export const products: Product[] = [
   {
     id: "1",
     name: "Premium Gold & Silicone Spatula Set",
-    description: "Elegant gold-finished handle with heat-resistant grey silicone heads.",
+    description: "Elevate your baking experience with this luxurious Premium Gold & Silicone Spatula Set. Featuring elegant, gold-finished stainless steel handles paired with high-quality, heat-resistant grey silicone heads, this set combines durability with style. Perfect for folding delicate batters, scraping mixing bowls clean, and frosting cakes with precision. The ergonomic design ensures a comfortable grip, making your baking prep smoother and more enjoyable.",
     price: "$18.99",
     category: "Baking Tools",
     image: "/images/spatula-set.png",
@@ -44,7 +44,7 @@ export const products: Product[] = [
   {
     id: "2",
     name: "Stainless Steel Whisk",
-    description: "Ergonomic handle and durable wires for perfect aeration.",
+    description: "Achieve perfectly aerated mixtures with our professional-grade Stainless Steel Whisk. Designed with sturdy yet flexible wires, it effortlessly beats eggs, whips cream, and blends sauces to a smooth consistency. The ergonomic handle provides a secure grip, reducing hand fatigue during vigorous whisking. A staple tool for every kitchen, built to withstand daily use without rusting or bending.",
     price: "$8.50",
     category: "Baking Tools",
     image: "/images/whisk.png", 
@@ -52,7 +52,7 @@ export const products: Product[] = [
   {
     id: "18",
     name: "Measuring Cup Set",
-    description: "Accurate stainless steel measuring cups for precise baking.",
+    description: "Precision is key in baking, and our Stainless Steel Measuring Cup Set ensures you get it right every time. This heavy-duty set includes standard cup sizes engraved clearly on the handles, so they'll never fade. Nested for compact storage and dishwasher safe, these cups are as practical as they are durable. Say goodbye to guesswork and hello to consistent, delicious results.",
     price: "$15.99",
     category: "Baking Tools",
     image: "/images/measuring-cups.png", 
@@ -61,7 +61,7 @@ export const products: Product[] = [
   {
     id: "3",
     name: "Professional Springform Pan Set",
-    description: "Heavy-duty black non-stick coating for easy release. Set of 3 sizes.",
+    description: "Bake flawless cheesecakes and layered cakes with our Professional Springform Pan Set. This versatile trio includes three essential sizes, each featuring a heavy-duty, quick-release latch and a premium non-stick coating for easy removal. The carbon steel construction ensures even heat distribution for perfectly baked treats every time. A must-have for both novice bakers and seasoned pros.",
     price: "$45.99",
     category: "Cake Tins",
     image: "/images/cake-tins.png",
@@ -70,7 +70,7 @@ export const products: Product[] = [
   {
     id: "4",
     name: "Square Cake Tin Set",
-    description: "Set of 3 professional grade square tins for tiered cakes.",
+    description: "Create stunning modern tiered cakes with our Square Cake Tin Set. Crafted from anodized aluminum, these tins heat faster and cool quicker than standard pans, preventing over-baking. The straight sides ensure sharp corners and uniform layers, ideal for professional-looking celebration cakes. This set includes three graduated sizes to cover all your baking needs.",
     price: "$34.99",
     category: "Cake Tins",
     image: "/images/square-tins.png",
@@ -78,7 +78,7 @@ export const products: Product[] = [
   {
     id: "19",
     name: "Heart Shaped Cake Tin",
-    description: "Perfect for Valentine's day and anniversary cakes.",
+    description: "Bake with love using our specialized Heart Shaped Cake Tin. Perfect for Valentine's Day, anniversaries, or wedding cakes, this tin offers a distinct, romantic shape without the need for carving. The reliable non-stick surface ensures your heartfelt creations come out intact and ready to decorate. Durable and easy to clean, it's a sweet addition to your bakeware collection.",
     price: "$12.50",
     category: "Cake Tins",
     image: "/images/heart-tin.png",
@@ -87,7 +87,7 @@ export const products: Product[] = [
   {
     id: "5",
     name: "Russian Piping Tips Set",
-    description: "Create beautiful floral designs instantly with these large nozzles.",
+    description: "Create intricate buttercream flowers in a single squeeze with our Russian Piping Tips Set. These large, stainless steel nozzles are designed to produce complete floral shapes instantly, saving you time and effort while producing professional-looking results. The set includes various flower designs, perfect for decorating cupcakes and cakes with a stunning garden effect.",
     price: "$22.50",
     category: "Piping Nozzles",
     image: "/images/fondant-tools.png",
@@ -96,7 +96,7 @@ export const products: Product[] = [
   {
     id: "20",
     name: "Star Nozzle Kit",
-    description: "Essential star tips for borders, rosettes, and swirls.",
+    description: "Master the classics with our Star Nozzle Kit. This essential collection features a range of open and closed star tips, ideal for piping borders, rosettes, swirls, and shells. Made from seamless stainless steel, these tips offer precise definition for your icing techniques. Whether you're a beginner or an expert, this kit is fundamental for cake decorating.",
     price: "$9.99",
     category: "Piping Nozzles",
     image: "/images/cutters.png",
@@ -105,7 +105,7 @@ export const products: Product[] = [
   {
     id: "6",
     name: "Premium Dark Chocolate Couverture",
-    description: "55% cocoa solids, perfect for ganache and molding.",
+    description: "Experience the rich, intense flavor of our Premium Dark Chocolate Couverture. With 55% cocoa solids, this high-quality chocolate is formulated with extra cocoa butter for superior melt and shine. Ideal for making glossy ganache, intricate molded chocolates, or decadent brownies. It's the secret ingredient that takes your chocolate desserts from good to gourmet.",
     price: "$15.00",
     category: "Ingredients",
     image: "/images/ingredients.png",
@@ -114,7 +114,7 @@ export const products: Product[] = [
   {
     id: "7",
     name: "Almond Flour (Extra Fine)",
-    description: "Blanched almond flour ideal for macarons and keto baking.",
+    description: "Our Extra Fine Almond Flour is unmatched in texture and quality. Blanched and ground to a superfine powder, it's the perfect base for delicate French macarons, gluten-free baking, and keto-friendly recipes. Unlike coarser meals, this flour ensures smooth batters and light, airy textures in your cakes and cookies.",
     price: "$19.99",
     category: "Ingredients",
     image: "/images/measuring-cups.png", 
@@ -123,7 +123,7 @@ export const products: Product[] = [
   {
     id: "8",
     name: "Vibrant Gel Food Color Set",
-    description: "Highly concentrated colors that won't alter consistency.",
+    description: "Bring your creative vision to life with our Vibrant Gel Food Color Set. These highly concentrated gels deliver bold, consistent color without watering down your icing or batter. A little goes a long way—just a drop is enough for vivid hues. Perfect for tinting fondant, buttercream, royal icing, and even cake batter.",
     price: "$24.99",
     category: "Gel Colors",
     image: "/images/gel-colors.png",
@@ -131,7 +131,7 @@ export const products: Product[] = [
   {
     id: "14",
     name: "Pastel Gel Color Pack",
-    description: "Soft pastel shades perfect for baby shower and wedding cakes.",
+    description: "Achieve dreamy, soft hues with our Pastel Gel Color Pack. Curated specifically for baby showers, weddings, and spring-themed treats, these colors blend seamlessly to create beautiful mints, pinks, and lavenders. The formula won't alter the texture or taste of your frosting, ensuring your desserts taste as good as they look.",
     price: "$18.50",
     category: "Gel Colors",
     image: "https://images.unsplash.com/photo-1570476922354-81227cdbb76c?auto=format&fit=crop&q=80&w=800",
@@ -140,7 +140,7 @@ export const products: Product[] = [
   {
     id: "9",
     name: "Silicone Macaron Mat",
-    description: "Pre-marked circles for consistent sizing. Non-stick.",
+    description: "Take the intimidation out of macaron making with our Silicone Macaron Mat. This non-stick mat features pre-printed circle guides to help you pipe uniform shells every time. Heat-resistant and reusable, it promotes even baking and prevents sticking, so your delicate cookies slide right off. Essential for achieving that professional patisserie look.",
     price: "$14.50",
     category: "Bakewares",
     image: "/images/silicone-macaron-mat.png",
@@ -148,7 +148,7 @@ export const products: Product[] = [
   {
     id: "21",
     name: "Cooling Rack",
-    description: "Grid pattern wire rack for efficient cooling of baked goods.",
+    description: "Ensure your baked goods cool quickly and evenly with our heavy-duty Cooling Rack. The tight grid pattern prevents cookies from sliding through while providing optimal air circulation to stop soggy bottoms. Sturdy feet keep the rack elevated, and its durable construction supports even the heaviest cakes without sagging.",
     price: "$11.00",
     category: "Bakewares",
     image: "/images/cooling-rack.png",
@@ -157,7 +157,7 @@ export const products: Product[] = [
   {
     id: "10",
     name: "Geometric Cookie Cutter Set",
-    description: "Stainless steel cutters in hexagon, circle, and square shapes.",
+    description: "Get trendy with our Geometric Cookie Cutter Set. Including hexagon, circle, and square shapes in various sizes, this set allows you to create modern cookie platters and tessellated designs. Made from sharp stainless steel for clean cuts through dough, fondant, and sandwiches. A versatile addition to any cutter collection.",
     price: "$9.99",
     category: "Cutters",
     image: "/images/cutters.png",
@@ -165,7 +165,7 @@ export const products: Product[] = [
   {
     id: "15",
     name: "Floral Cookie Cutter Set",
-    description: "Detailed flower shapes for intricate cookie designs.",
+    description: "Bring a garden to your kitchen with our Floral Cookie Cutter Set. Featuring detailed petal and flower shapes, these cutters are perfect for spring baking, Mother's Day, or tea parties. The sturdy metal construction ensures they hold their shape year after year, helping you create beautiful, nature-inspired treats.",
     price: "$11.99",
     category: "Cutters",
     image: "/images/floral-cutters.png",
@@ -174,7 +174,7 @@ export const products: Product[] = [
   {
     id: "11",
     name: "Fondant Rolling Pin",
-    description: "Non-stick smooth surface for rolling out fondant and gum paste.",
+    description: "Roll out fondant, gum paste, and marzipan with ease using our specialized Fondant Rolling Pin. The non-stick, smooth surface eliminates texture transfer, ensuring a flawless finish for covering cakes. It comes with guide rings to help you achieve a perfectly even thickness every time, making cake covering structurally sound and visually pleasing.",
     price: "$16.00",
     category: "Fondant & Tools",
     image: "/images/fondant-tools.png", 
@@ -182,7 +182,7 @@ export const products: Product[] = [
   {
     id: "16",
     name: "White Rolled Fondant (1kg)",
-    description: "Premium quality fondant with excellent elasticity and smooth finish.",
+    description: "Our Premium White Rolled Fondant is a favorite among professional decorators. It offers excellent elasticity, allowing you to stretch and smooth it over sharp edges without tearing or elephant skin. With a subtle vanilla flavor that complements any cake, it dries to a silky finish that's perfect for painting or adding decorations.",
     price: "$12.50",
     category: "Fondant & Tools",
     image: "/images/white-fondant.png",
@@ -191,7 +191,7 @@ export const products: Product[] = [
   {
     id: "12",
     name: "Gold Pearl Sprinkles",
-    description: "Edible metallic gold pearls to add a touch of luxury.",
+    description: "Add a touch of opulence to your desserts with our edible Gold Pearl Sprinkles. These shimmering metallic pearls are perfect for wedding cakes, anniversary cupcakes, and festive holiday treats. Fully edible and safe, they provide a sophisticated crunch and a high-end finish that instantly upgrades any creation.",
     price: "$8.99",
     category: "Sprinkles",
     image: "/images/gold-sprinkles.png", 
@@ -200,7 +200,7 @@ export const products: Product[] = [
   {
     id: "22",
     name: "Rainbow Sprinkles Mix",
-    description: "Fun and colorful sprinkles for birthday cakes and cupcakes.",
+    description: "Celebrate in style with our classic Rainbow Sprinkles Mix. This vibrant blend of colors adds instant joy to birthday cakes, ice cream sundaes, and party cupcakes. Formulated to hold their color during baking, they are perfect for funfetti cakes. A pantry staple for happy occasions!",
     price: "$6.50",
     category: "Sprinkles",
     image: "/images/sprinkles.png",
@@ -209,7 +209,7 @@ export const products: Product[] = [
   {
     id: "13",
     name: "Happy Birthday Acrylic Topper",
-    description: "Gold mirror finish acrylic topper for elegant birthday cakes.",
+    description: "Top off your celebration cake with our sleek Happy Birthday Acrylic Topper. Featuring a mirror-gold finish and elegant script typography, it adds a modern, sophisticated focal point to any cake. Reusable and easy to clean, it's a quick way to make a simple cake look professionally finished.",
     price: "$5.99",
     category: "Theme Toppers",
     image: "/images/theme-toppers.png", 
@@ -217,7 +217,7 @@ export const products: Product[] = [
   {
     id: "17",
     name: "Wedding Cake Topper",
-    description: "Romantic 'Mr & Mrs' topper for wedding and anniversary cakes.",
+    description: "Add a romantic final touch with our 'Mr & Mrs' Wedding Cake Topper. The delicate design fits perfectly atop wedding and engagement cakes, suitable for rustic, modern, or classic themes. Made from food-safe materials, it stands securely as a beautiful keepsake for the special couple.",
     price: "$7.99",
     category: "Theme Toppers",
     image: "/images/wedding-topper.png", 
@@ -225,7 +225,7 @@ export const products: Product[] = [
   {
     id: "23",
     name: "Unicorn Cake Topper Set",
-    description: "Includes horn, ears, and flowers for a magical unicorn cake.",
+    description: "Transform an ordinary cake into a magical creature with our Unicorn Cake Topper Set. This all-in-one kit includes a gold horn, ears, and eyelashes. It's the easiest way to achieve the trending unicorn cake look without needing advanced modeling skills. Perfect for kids' birthday parties!",
     price: "$13.99",
     category: "Theme Toppers",
     image: "/images/unicorn-topper.png", 
@@ -234,7 +234,7 @@ export const products: Product[] = [
   {
     id: "24",
     name: "Kraft Window Bakery Boxes (Set of 10)",
-    description: "Eco-friendly kraft boxes with clear display windows. Perfect for selling.",
+    description: "Showcase your treats while keeping them fresh with our Kraft Window Bakery Boxes. This set of 10 eco-friendly boxes features a clear viewing window, making them perfect for gifting or selling cookies, brownies, and pastries. Easy to assemble and sturdy enough to protect your goods during transport.",
     price: "$25.00",
     category: "Packaging & Boxes",
     image: "/images/packaging-boxes.png",
@@ -243,7 +243,7 @@ export const products: Product[] = [
   {
     id: "25",
     name: "Intricate Silicone Flower Moulds",
-    description: "Flexible silicone moulds for creating detailed fondant or chocolate flowers.",
+    description: "Create breathtakingly detailed decorations with our Intricate Silicone Flower Moulds. These flexible moulds allow you to cast realistic fondant, chocolate, or gum paste flowers in seconds. Ideal for adding elaborate floral accents to wedding cakes without the time-consuming process of hand-sculpting each petal.",
     price: "$14.99",
     category: "Silicone Moulds",
     image: "/images/silicone-moulds.png",
@@ -252,7 +252,7 @@ export const products: Product[] = [
   {
     id: "26",
     name: "Luxury Marble & Gold Cake Stand",
-    description: "3-Tier cake stand with marble platters and gold pillar. Stunning centerpiece.",
+    description: "Make a statement with our Luxury Marble & Gold Cake Stand. This stunning 3-tier stand features genuine marble platters supported by a central gold pillar. It's not just a stand; it's a centerpiece that elevates the presentation of high tea, weddings, or dessert buffets. Heavy, stable, and undeniably elegant.",
     price: "$89.99",
     category: "Display Stands",
     image: "/images/cake-stand.png",
@@ -261,7 +261,7 @@ export const products: Product[] = [
   {
     id: "27",
     name: "Blush Peony Cake Flowers",
-    description: "High-quality artificial peony bouquet for elegant cake decoration.",
+    description: "Achieve the look of fresh blooms without the wilt risk using our Blush Peony Cake Flowers. These high-quality artificial peonies feature realistic petal textures and soft coloring. Food-safe and reusable, they are the perfect solution for decorating cakes in hot weather or for venues where fresh flowers aren't permitted.",
     price: "$22.50",
     category: "Artificial Flowers",
     image: "/images/artificial-flowers.png",
@@ -270,7 +270,7 @@ export const products: Product[] = [
   {
     id: "28",
     name: "Standard Cupcake Liners (White)",
-    description: "Grease-proof, oven safe paper liners. Pack of 100.",
+    description: "You can never go wrong with basics. Our Standard White Cupcake Liners are grease-proof and sturdy, ensuring they hold their shape locally and keep your fingers clean. This pack of 100 provides great value for everyday baking. They separate easily and peel away cleanly from your muffins and cupcakes.",
     price: "$4.99",
     category: "Liners & Papers",
     image: "/images/cupcake-liners.png", 

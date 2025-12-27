@@ -33,6 +33,7 @@ export function Navbar() {
   const links = [
     { href: "/", label: "Home" },
     { href: "/products", label: "Products" },
+    { href: "/locations", label: "Locations" },
     { href: "/about", label: "About Us" },
     { href: "/contact", label: "Contact" },
   ]
@@ -47,7 +48,7 @@ export function Navbar() {
             alt="Bakers Mart"
             width={600}
             height={120}
-            className="h-32 w-auto object-contain"
+            className="h-20 w-auto object-contain"
             priority
           />
         </Link>
@@ -69,13 +70,13 @@ export function Navbar() {
         </div>
 
         {/* Right Icons */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 h-full">
           {/* Search */}
-          <div className="relative">
+          <div className="relative flex items-center">
             {!searchOpen ? (
               <button 
                 onClick={() => setSearchOpen(true)}
-                className="text-[#f3e5b5] hover:text-white transition-colors" 
+                className="text-[#f3e5b5] hover:text-white transition-colors flex items-center justify-center" 
                 aria-label="Search Products"
               >
                 <Search className="w-5 h-5" />
@@ -96,7 +97,7 @@ export function Navbar() {
                     setSearchOpen(false)
                     setSearchQuery("")
                   }}
-                  className="text-[#f3e5b5] hover:text-white"
+                  className="text-[#f3e5b5] hover:text-white flex items-center justify-center"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -104,7 +105,7 @@ export function Navbar() {
             )}
           </div>
 
-          <Link href="/wishlist" className="relative text-[#f3e5b5] hover:text-white transition-colors">
+          <Link href="/wishlist" className="relative text-[#f3e5b5] hover:text-white transition-colors flex items-center justify-center">
             <Heart className="w-5 h-5" />
             {wishlistCount > 0 && (
               <span className="absolute -top-2 -right-2 bg-[#f3e5b5] text-[#7E0806] text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">
@@ -115,7 +116,7 @@ export function Navbar() {
           
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-[#f3e5b5]"
+            className="md:hidden text-[#f3e5b5] flex items-center justify-center"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
