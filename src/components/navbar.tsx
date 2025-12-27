@@ -6,10 +6,9 @@ import * as React from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname, useRouter } from "next/navigation"
-import { Menu, X, Search, Heart } from "lucide-react"
+import { Menu, X, Search } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { useWishlist } from "@/context/wishlist-context"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false)
@@ -17,9 +16,6 @@ export function Navbar() {
   const [searchQuery, setSearchQuery] = React.useState("")
   const pathname = usePathname()
   const router = useRouter()
-  const { items } = useWishlist()
-  
-  const wishlistCount = items.length
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
@@ -104,15 +100,6 @@ export function Navbar() {
               </form>
             )}
           </div>
-
-          <Link href="/wishlist" className="relative text-[#f3e5b5] hover:text-white transition-colors flex items-center justify-center">
-            <Heart className="w-5 h-5" />
-            {wishlistCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-[#f3e5b5] text-[#7E0806] text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">
-                {wishlistCount}
-              </span>
-            )}
-          </Link>
           
           {/* Mobile Menu Button */}
           <button

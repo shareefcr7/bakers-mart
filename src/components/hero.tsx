@@ -10,21 +10,19 @@ import { FadeIn } from "@/components/ui/fade-in"
 export function Hero() {
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-neutral-900 via-stone-900 to-neutral-950">
-      {/* Background Image - 8K Premium */}
-      <div className="absolute inset-0 z-0 bg-[#700c0d]">
+      {/* Background Image - Bakersmart Cake */}
+      <div className="absolute inset-0 z-0 bg-[#8B0000]">
         <Image
-          src="/hero-bg-bakers-mart-final-v3.jpg"
-          alt="Premium Cake Showcase"
+          src="/hero-bakersmart-cake.png"
+          alt="Bakersmart Red Velvet Cake"
           fill
-          className="object-contain md:object-cover scale-100 md:scale-105 animate-slow-zoom object-top md:object-center" 
+          className="object-contain object-top md:object-cover md:object-center" 
           priority
           quality={100}
         />
-        {/* Star Hider Overlay */}
-        <div className="absolute bottom-0 right-0 w-24 h-24 bg-[#700c0d]" />
-        {/* Premium Gradient Overlay - Dark Theme for Red Velvet Background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent md:from-black/85 md:via-black/50 opacity-40 md:opacity-100" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/60" />
+        {/* Premium Gradient Overlay - Responsive for Text Readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/20 md:from-black/65 md:via-black/35 lg:from-black/60 lg:via-black/30 lg:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/55" />
       </div>
 
 

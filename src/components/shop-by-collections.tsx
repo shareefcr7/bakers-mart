@@ -164,6 +164,7 @@ export function ShopByCollections() {
             <AnimatedHeading 
               title="Shop By Collections" 
               className="text-3xl md:text-5xl font-bold text-[#7E0806] mb-4"
+              iconSrc="/best-sellers-logo.png"
             />
             <p className="text-neutral-400 max-w-2xl mx-auto text-lg mt-4">
               Curated selections of our finest cakes and baking essentials.

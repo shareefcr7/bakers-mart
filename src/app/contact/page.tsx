@@ -15,7 +15,7 @@ export default function ContactPage() {
       
       <section className="relative py-24 md:py-32 bg-white overflow-hidden">
         <div className="container mx-auto px-4 text-center relative z-10">
-          <AnimatedHeading title="Contact Us" textColor="text-[#7E0806]" />
+          <AnimatedHeading title="Contact Us" textColor="text-[#7E0806]" iconSrc="/best-sellers-logo.png" />
           <FadeIn delay={0.2}><p className="text-[#7E0806]/80 mt-4 text-lg md:text-xl font-medium max-w-2xl mx-auto">We&apos;d love to hear from you. Get in touch with us.</p></FadeIn>
         </div>
       </section>

@@ -8,7 +8,15 @@ export function Footer() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
           <div>
-            <h3 className="text-2xl font-bold text-white mb-4">BAKERs MART</h3>
+            <div className="mb-4 transform transition-all duration-500 hover:scale-110 hover:rotate-3">
+              <Image
+                src="/footer-bakersmart-logo-cream.png"
+                alt="Bakersmart Logo"
+                width={346}
+                height={135}
+                className="h-auto w-72 sm:w-80 md:w-96 object-contain transition-transform duration-300"
+              />
+            </div>
             <p className="text-primary-foreground/60 text-sm leading-relaxed">
               Premium bakery supplies for professionals and home bakers. Elevating your baking artistry since 2024.
             </p>
@@ -46,28 +54,8 @@ export function Footer() {
         </div>
         
         <div className="border-t border-neutral-200 mt-12 pt-8 -mx-4 px-4 pb-8">
-        <div className="flex items-center justify-center gap-6">
-          {/* Left Logo */}
-          <div className="relative w-[400px] h-[250px] animate-float transform-gpu transition-transform duration-700 hover:scale-110 hover:rotate-12" style={{transformStyle: 'preserve-3d'}}>
-            <Image
-              src="/footer-logo.png"
-              alt="Logo"
-              fill
-              className="object-contain"
-            />
-          </div>
-          
+        <div className="flex items-center justify-center">
           <p className="text-neutral-600 text-sm">© 2025 BAKERs MART. All rights reserved.</p>
-          
-          {/* Right Logo */}
-          <div className="relative w-[400px] h-[250px] animate-float transform-gpu transition-transform duration-700 hover:scale-110 hover:-rotate-12" style={{transformStyle: 'preserve-3d', animationDelay: '0.5s'}}>
-            <Image
-              src="/footer-logo.png"
-              alt="Logo"
-              fill
-              className="object-contain"
-            />
-          </div>
         </div>
       </div>
       </div>
