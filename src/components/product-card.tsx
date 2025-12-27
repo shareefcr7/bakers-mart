@@ -7,15 +7,17 @@ import { Product } from "@/lib/data"
 import { Heart } from "lucide-react"
 import { useWishlist } from "@/context/wishlist-context"
 import { cn } from "@/lib/utils"
+import { useState } from "react"
 
 interface ProductCardProps {
   product: Product
   variant?: "dark" | "light"
 }
 
-export function ProductCard({ product, variant = "dark" }: ProductCardProps) {
+export function ProductCard({ product, variant = "dark", priority = false }: ProductCardProps & { priority?: boolean }) {
   const { isInWishlist, toggleWishlist } = useWishlist()
   const isWishlisted = isInWishlist(product.id)
+  const [imageLoaded, setImageLoaded] = useState(false)
   
   // Calculate discount percentage if original price existed (simulated)
   const priceValue = parseInt(product.price.replace(/[^0-9]/g, ""))
@@ -27,8 +29,8 @@ export function ProductCard({ product, variant = "dark" }: ProductCardProps) {
   return (
     <motion.div 
       className="group relative h-full flex flex-col"
-      whileHover={{ y: -8 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      whileHover={{ y: -5 }}
+      transition={{ type: "spring", stiffness: 400, damping: 25 }}
     >
       {/* Card Background with Glassmorphism */}
       <div className={cn(
@@ -39,12 +41,18 @@ export function ProductCard({ product, variant = "dark" }: ProductCardProps) {
       )} />
 
       {/* Image Container */}
-      <div className="relative aspect-square overflow-hidden rounded-t-2xl">
+      <div className="relative aspect-square overflow-hidden rounded-t-2xl bg-neutral-100/10">
         <Image
           src={product.image}
           alt={product.name}
           fill
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+          priority={priority}
+          sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+          className={cn(
+            "object-cover transition-all duration-700 ease-out group-hover:scale-110",
+            imageLoaded ? "opacity-100 blur-0" : "opacity-0 blur-lg scale-105"
+          )}
+          onLoad={() => setImageLoaded(true)}
         />
         
         {/* Subtle overlay for contrast on hover */}

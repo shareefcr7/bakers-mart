@@ -31,7 +31,7 @@ export function BestSellers() {
               transition={{ delay: index * 0.1 }}
               className="h-full"
             >
-              <ProductCard product={product} />
+              <ProductCard product={product} priority={true} />
             </motion.div>
           ))}
         </div>

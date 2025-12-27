@@ -13,7 +13,7 @@ export function Hero() {
       {/* Background Image - 8K Premium */}
       <div className="absolute inset-0 z-0 bg-[#700c0d]">
         <Image
-          src="/hero-bg-bakes-mart-vibrant.png"
+          src="/hero-bg-bakers-mart-final-v3.jpg"
           alt="Premium Cake Showcase"
           fill
           className="object-contain md:object-cover scale-100 md:scale-105 animate-slow-zoom object-top md:object-center" 
