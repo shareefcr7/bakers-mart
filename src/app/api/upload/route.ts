@@ -1,7 +1,8 @@
-
 import { NextResponse } from 'next/server';
 import cloudinary from '@/lib/cloudinary';
 import { UploadApiResponse, UploadApiErrorResponse } from 'cloudinary';
+import { writeFile, mkdir } from 'fs/promises';
+import path from 'path';
 
 export async function POST(request: Request) {
   try {
@@ -15,27 +16,59 @@ export async function POST(request: Request) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    return new Promise((resolve, reject) => {
-      const uploadStream = cloudinary.uploader.upload_stream(
-        {
-          folder: 'bakery-mart/products',
-        },
-        (error: UploadApiErrorResponse | undefined, result: UploadApiResponse | undefined) => {
-          if (error) {
-            console.error('Cloudinary upload error:', error);
-            reject(NextResponse.json({ error: 'Upload failed' }, { status: 500 }));
-          } else {
-            resolve(
-              NextResponse.json({
-                url: result?.secure_url,
-                success: true,
-              })
-            );
-          }
-        }
-      );
+    // Try Cloudinary upload if keys are present
+    const hasCloudinaryKeys = 
+      process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME && 
+      process.env.CLOUDINARY_API_KEY && 
+      process.env.CLOUDINARY_API_SECRET;
 
-      uploadStream.end(buffer);
+    if (hasCloudinaryKeys) {
+      try {
+        const result = await new Promise<UploadApiResponse>((resolve, reject) => {
+          const uploadStream = cloudinary.uploader.upload_stream(
+            {
+              folder: 'bakery-mart/products',
+            },
+            (error: UploadApiErrorResponse | undefined, result: UploadApiResponse | undefined) => {
+              if (error) reject(error);
+              else if (result) resolve(result);
+              else reject(new Error('Upload failed'));
+            }
+          );
+          uploadStream.end(buffer);
+        });
+
+        return NextResponse.json({
+          url: result.secure_url,
+          success: true,
+        });
+      } catch (cloudinaryError) {
+        console.error('Cloudinary upload failed, falling back to local storage:', cloudinaryError);
+        // Continue to local storage fallback
+      }
+    }
+
+    // Local storage fallback
+    const uploadsDir = path.join(process.cwd(), 'public', 'uploads');
+    
+    // Ensure uploads directory exists
+    try {
+      await mkdir(uploadsDir, { recursive: true });
+    } catch (err) {
+      // Ignore error if directory exists
+    }
+
+    // Create unique filename
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    const filename = file.name.replace(/[^a-zA-Z0-9.-]/g, ''); // Sanitize filename
+    const uniqueFilename = `${uniqueSuffix}-${filename}`;
+    const filepath = path.join(uploadsDir, uniqueFilename);
+
+    await writeFile(filepath, buffer);
+
+    return NextResponse.json({
+      url: `/uploads/${uniqueFilename}`,
+      success: true,
     });
 
   } catch (error) {

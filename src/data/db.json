@@ -232,6 +232,16 @@
       "price": "$4.99",
       "category": "Liners & Papers",
       "image": "/images/cupcake-liners.png"
+    },
+    {
+      "id": "1766999415421",
+      "name": "game car",
+      "description": "car ga,e cake ",
+      "price": "1234567890-",
+      "category": "Sprinkles",
+      "image": "/uploads/1766999384533-524139555-1.jpeg",
+      "isBestSeller": false,
+      "isNew": false
     }
   ],
   "categories": [
