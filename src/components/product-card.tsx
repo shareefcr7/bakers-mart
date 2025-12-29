@@ -52,6 +52,12 @@ export function ProductCard({ product, variant = "dark", priority = false }: Pro
             "object-cover transition-all duration-700 ease-out group-hover:scale-110",
             imageLoaded ? "opacity-100 blur-0" : "opacity-0 blur-lg scale-105"
           )}
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = "/images/placeholder.png";
+            target.srcset = "";
+            setImageLoaded(true); // Ensure it fades in
+          }}
           onLoad={() => setImageLoaded(true)}
         />
         
