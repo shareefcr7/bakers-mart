@@ -41,12 +41,17 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const { id } = await params;
-  const deleted = await deleteProduct(id);
-  
-  if (!deleted) {
-    return NextResponse.json({ error: 'Product not found' }, { status: 404 });
+  try {
+    const { id } = await params;
+    const deleted = await deleteProduct(id);
+    
+    if (!deleted) {
+      return NextResponse.json({ error: 'Product not found' }, { status: 404 });
+    }
+    
+    return NextResponse.json({ success: true, deleted });
+  } catch (error: any) {
+    console.error("Delete Error:", error);
+    return NextResponse.json({ error: error.message || 'Failed to delete product' }, { status: 500 });
   }
-  
-  return NextResponse.json({ success: true, deleted });
 }
