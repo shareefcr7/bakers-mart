@@ -1,12 +1,12 @@
 
 import { NextResponse } from 'next/server';
-import { getProducts, addProduct, Product } from '@/lib/db';
+import { getProducts, addProduct } from '@/lib/db';
 
 export async function GET() {
   try {
     const products = await getProducts();
     return NextResponse.json(products);
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json({ error: 'Failed to fetch products' }, { status: 500 });
   }
 }
@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     const newProduct = {
       id: Date.now().toString(), // Simple ID generation
       name: body.name,
-      description: body.description || '',
+      description: body.description || 'No description provided.',
       price: body.price,
       category: body.category || 'Uncategorized',
       image: body.image || '/images/placeholder.png', // Fallback image
@@ -34,8 +34,9 @@ export async function POST(request: Request) {
 
     const added = await addProduct(newProduct);
     return NextResponse.json(added, { status: 201 });
-  } catch (error) {
-    console.error(error);
-    return NextResponse.json({ error: 'Failed to create product' }, { status: 500 });
+  } catch (error: unknown) {
+    console.error('API Error:', error);
+    const message = error instanceof Error ? error.message : 'Failed to create product';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

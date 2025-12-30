@@ -3,7 +3,7 @@
 
 import { useEffect, useState, use } from 'react';
 import { useRouter } from 'next/navigation';
-import { ChevronLeft, Save, Loader2, Trash2 } from 'lucide-react';
+import { ChevronLeft, Save, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import ImageUpload from '@/components/admin/ImageUpload';
 
@@ -16,40 +16,41 @@ export default function EditCategoryPage({ params }: { params: Promise<{ id: str
   const router = useRouter();
 
   useEffect(() => {
-    fetchCategory();
-  }, [id]);
-
-  const fetchCategory = async () => {
-    try {
-      // Since our API currently returns all categories, we can filter or fetch logic
-      // But standard REST would use /api/categories/[id], which we have not implemented as a separate GET endpoint? 
-      // Wait, I implemented `src/app/api/categories/[id]/route.ts` with PUT and DELETE.
-      // I did NOT implement GET in `[id]/route.ts`. 
-      // I need to add GET to `src/app/api/categories/[id]/route.ts` or fetch list and find.
-      // Fetching list and finding is inefficient but works for small scale. 
-      // Let's quickly fix the API first or just use the list endpoint here if I can't edit API now.
-      // Actually I can just edit the API now by re-writing it.
-      // But to be fast, I'll just fetch all and find one. 
-      // PROPER WAY: Add GET to `[id]/route.ts`. 
-      // I will assume I will fix the API in next step or use the list fetch here.
-      // Let's use the list fetch for now to avoid breaking flow.
-      const res = await fetch('/api/categories');
-      if (res.ok) {
-        const data = await res.json();
-        const category = data.find((c: any) => c.id === id);
-        if (category) {
-          setName(category.name);
-          setImage(category.image);
-        } else {
-             router.push('/admin/categories'); 
+    const fetchCategory = async () => {
+        try {
+          // Since our API currently returns all categories, we can filter or fetch logic
+          // But standard REST would use /api/categories/[id], which we have not implemented as a separate GET endpoint? 
+          // Wait, I implemented `src/app/api/categories/[id]/route.ts` with PUT and DELETE.
+          // I did NOT implement GET in `[id]/route.ts`. 
+          // I need to add GET to `src/app/api/categories/[id]/route.ts` or fetch list and find.
+          // Fetching list and finding is inefficient but works for small scale. 
+          // Let's quickly fix the API first or just use the list endpoint here if I can't edit API now.
+          // Actually I can just edit the API now by re-writing it.
+          // But to be fast, I'll just fetch all and find one. 
+          // PROPER WAY: Add GET to `[id]/route.ts`. 
+          // I will assume I will fix the API in next step or use the list fetch here.
+          // Let's use the list fetch for now to avoid breaking flow.
+          const res = await fetch('/api/categories');
+          if (res.ok) {
+            const data = await res.json();
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const category = data.find((c: any) => c.id === id);
+            if (category) {
+              setName(category.name);
+              setImage(category.image);
+            } else {
+                 router.push('/admin/categories'); 
+            }
+          }
+        } catch (err) {
+          console.error(err);
+        } finally {
+          setIsLoading(false);
         }
-      }
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+      };
+
+    fetchCategory();
+  }, [id, router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -70,7 +71,7 @@ export default function EditCategoryPage({ params }: { params: Promise<{ id: str
         const data = await res.json();
         alert(data.error || 'Failed to update category');
       }
-    } catch (error) {
+    } catch (_error) {
       alert('An error occurred');
     } finally {
       setIsSubmitting(false);

@@ -1,11 +1,11 @@
 import dbConnect from './mongodb';
 import Product, { IProduct } from '@/models/Product';
-import Category, { ICategory } from '@/models/Category';
+import Category from '@/models/Category';
 import { products as initialProducts, categoryData as initialCategories } from './data';
 
 // Types
-export type { IProduct as Product } from '@/models/Product'; // Re-export for compatibility
-export type { ICategory as Category } from '@/models/Category';
+export type { IProduct } from '@/models/Product';
+export type { ICategory } from '@/models/Category';
 
 // Helper to ensure DB is connected and seeded
 async function initDB() {
@@ -43,14 +43,14 @@ export async function getProductById(id: string) {
   return product ? JSON.parse(JSON.stringify(product)) : null;
 }
 
-export async function addProduct(productData: any) {
+export async function addProduct(productData: Partial<IProduct>) {
   await initDB();
   const newProduct = new Product(productData);
   await newProduct.save();
   return JSON.parse(JSON.stringify(newProduct));
 }
 
-export async function updateProduct(id: string, updates: any) {
+export async function updateProduct(id: string, updates: Partial<IProduct>) {
   await initDB();
   const updated = await Product.findOneAndUpdate({ id }, updates, { new: true });
   return updated ? JSON.parse(JSON.stringify(updated)) : null;
@@ -69,7 +69,7 @@ export async function getCategories() {
   return JSON.parse(JSON.stringify(categories));
 }
 
-export async function addCategory(categoryData: any) {
+export async function addCategory(categoryData: Partial<typeof Category.prototype>) {
   await initDB();
   
   // Custom duplicate check (optional since we have initDB handling uniqueness mostly)
@@ -87,7 +87,7 @@ export async function addCategory(categoryData: any) {
   return JSON.parse(JSON.stringify(newCategory));
 }
 
-export async function updateCategory(id: string, updates: any) {
+export async function updateCategory(id: string, updates: Partial<typeof Category.prototype>) {
   await initDB();
   const updated = await Category.findOneAndUpdate({ id }, updates, { new: true });
   return updated ? JSON.parse(JSON.stringify(updated)) : null;

@@ -99,7 +99,7 @@ export function ProductCard({ product, variant = "dark", priority = false }: Pro
             <p className={cn(
                 "text-[10px] uppercase tracking-[0.15em] font-medium transition-colors duration-300",
                 isLight ? "text-neutral-500 group-hover:text-neutral-900" : "text-[#f3e5b5]/60 group-hover:text-[#f3e5b5]"
-            )}>{product.category}</p>
+            )}>{product.category === 'Uncategorized' || product.category === 'UNCATEGORIZED' ? 'General' : product.category}</p>
             {/* Rating Stars (Static for now) */}
             <div className="flex items-center gap-0.5">
                 {[1,2,3,4,5].map(i => (

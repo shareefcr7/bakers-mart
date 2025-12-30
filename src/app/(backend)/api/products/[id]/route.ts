@@ -32,7 +32,7 @@ export async function PUT(
     }
     
     return NextResponse.json(updated);
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json({ error: 'Failed to update product' }, { status: 500 });
   }
 }
@@ -50,8 +50,9 @@ export async function DELETE(
     }
     
     return NextResponse.json({ success: true, deleted });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Delete Error:", error);
-    return NextResponse.json({ error: error.message || 'Failed to delete product' }, { status: 500 });
+    const message = error instanceof Error ? error.message : 'Failed to delete product';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

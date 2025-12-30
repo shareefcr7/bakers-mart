@@ -46,14 +46,18 @@ export default function NewProductPage() {
         body: JSON.stringify(formData),
       });
 
+      const data = await res.json();
+
       if (res.ok) {
         router.push('/admin/products');
         router.refresh();
       } else {
-        alert('Failed to create product');
+        alert(data.error || 'Failed to create product');
       }
-    } catch (error) {
-      alert('An error occurred');
+    } catch (error: unknown) {
+      console.error(error);
+      const message = error instanceof Error ? error.message : 'An error occurred';
+      alert(message);
     } finally {
       setIsSubmitting(false);
     }

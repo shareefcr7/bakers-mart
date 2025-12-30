@@ -6,15 +6,24 @@ import mongoose from 'mongoose';
  * in development. This prevents connections growing exponentially
  * during API Route usage.
  */
-let cached = (global as any).mongoose;
-
-if (!cached) {
-  cached = (global as any).mongoose = { conn: null, promise: null };
+declare global {
+  // eslint-disable-next-line no-var
+  var mongoose: { conn: typeof import("mongoose") | null; promise: Promise<typeof import("mongoose")> | null } | undefined;
 }
 
+let cached = global.mongoose;
+
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
+}
+// Ensure cached is treated as defined
+
+
 async function dbConnect() {
-  if (cached.conn) {
-    return cached.conn;
+  const mongoCache = global.mongoose!;
+
+  if (mongoCache.conn) {
+    return mongoCache.conn;
   }
 
   if (!process.env.MONGODB_URI) {
@@ -23,24 +32,24 @@ async function dbConnect() {
     );
   }
 
-  if (!cached.promise) {
+  if (!mongoCache.promise) {
     const opts = {
       bufferCommands: false,
     };
 
-    cached.promise = mongoose.connect(process.env.MONGODB_URI, opts).then((mongoose) => {
+    mongoCache.promise = mongoose.connect(process.env.MONGODB_URI, opts).then((mongoose) => {
       return mongoose;
     });
   }
   
   try {
-    cached.conn = await cached.promise;
+    mongoCache.conn = await mongoCache.promise;
   } catch (e) {
-    cached.promise = null;
+    mongoCache.promise = null;
     throw e;
   }
 
-  return cached.conn;
+  return mongoCache.conn;
 }
 
 export default dbConnect;

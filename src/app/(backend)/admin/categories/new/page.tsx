@@ -32,7 +32,7 @@ export default function NewCategoryPage() {
         const data = await res.json();
         alert(data.error || 'Failed to create category');
       }
-    } catch (error) {
+    } catch (_error) {
       alert('An error occurred');
     } finally {
       setIsSubmitting(false);

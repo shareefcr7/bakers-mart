@@ -16,7 +16,7 @@ export async function PUT(
     }
     
     return NextResponse.json(updated);
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json({ error: 'Failed to update category' }, { status: 500 });
   }
 }
@@ -34,7 +34,8 @@ export async function DELETE(
     }
     
     return NextResponse.json({ success: true, deleted });
-  } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 400 });
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : String(error);
+    return NextResponse.json({ error: message }, { status: 400 });
   }
 }

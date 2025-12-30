@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
-// import { products } from "@/lib/data" // Removed static import
+import { Product } from "@/lib/data"
 import { getProductById, getProducts } from "@/lib/db"
 import { notFound } from "next/navigation"
 import Image from "next/image"
@@ -17,6 +17,8 @@ export function generateStaticParams() {
 }
 */
 
+import { IProduct } from "@/models/Product"
+
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   const product = await getProductById(id)
@@ -26,11 +28,10 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
   }
 
   // Fetch all products to find related ones (in a real app, use a DB query)
-  const allProducts = await getProducts()
+  const allProducts = (await getProducts()) as IProduct[];
   
-  // @ts-ignore
   const relatedProducts = allProducts
-    .filter((p: any) => p.category === product.category && p.id !== product.id)
+    .filter((p) => p.category === product.category && p.id !== product.id)
     .slice(0, 5)
 
   return (
@@ -112,8 +113,8 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
             <div className="border-t border-white/10 pt-16">
                 <h2 className="text-2xl font-bold mb-8 text-white">Related Items</h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                    {relatedProducts.map((p: any) => (
-                        <ProductCard key={p.id} product={p} variant="dark" />
+                    {relatedProducts.map((p) => (
+                        <ProductCard key={p.id} product={p as unknown as Product} variant="dark" />
                     ))}
                 </div>
             </div>

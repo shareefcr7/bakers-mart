@@ -2,7 +2,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { Plus, Pencil, Trash2, Search, AlertCircle } from 'lucide-react';
+import { Plus, Pencil, Trash2, Search } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -16,7 +16,6 @@ interface Category {
 export default function CategoriesPage() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const router = useRouter();
 
@@ -31,8 +30,8 @@ export default function CategoriesPage() {
         const data = await res.json();
         setCategories(data);
       }
-    } catch (err) {
-      setError('Failed to load categories');
+    } catch (_err) {
+      console.error('Failed to load categories');
     } finally {
       setIsLoading(false);
     }
@@ -53,7 +52,7 @@ export default function CategoriesPage() {
         const data = await res.json();
         alert(data.error || 'Failed to delete');
       }
-    } catch (err) {
+    } catch (_err) {
       alert('An error occurred');
     }
   };

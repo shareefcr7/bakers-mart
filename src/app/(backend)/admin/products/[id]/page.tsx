@@ -31,31 +31,35 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
   const router = useRouter();
 
   useEffect(() => {
-    // Load categories
-    fetch('/api/categories')
-      .then(res => res.json())
-      .then(data => setCategories(data))
-      .catch(err => console.error('Failed to load categories', err));
+    const fetchData = async () => {
+      try {
+        // Load categories
+        const catRes = await fetch('/api/categories');
+        if (catRes.ok) {
+           const catData = await catRes.json();
+           setCategories(catData);
+        }
 
-    // Load product
-    fetch(`/api/products/${id}`)
-      .then(res => {
-         if (!res.ok) throw new Error('Failed to load');
-         return res.json();
-      })
-      .then(data => {
+        // Load product
+        const prodRes = await fetch(`/api/products/${id}`);
+        if (!prodRes.ok) throw new Error('Failed to load');
+        const prodData = await prodRes.json();
+        
         setFormData({
-            ...data,
-            isNewProduct: data.isNewProduct || data.isNew || false,
-            images: data.images || []
+            ...prodData,
+            isNewProduct: prodData.isNewProduct || prodData.isNew || false,
+            images: prodData.images || []
         });
         setIsLoading(false);
-      })
-      .catch(err => {
+
+      } catch (err) {
         console.error(err);
         router.push('/admin/products');
-      });
-  }, [id]);
+      }
+    };
+
+    fetchData();
+  }, [id, router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,7 +78,7 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
       } else {
         alert('Failed to update product');
       }
-    } catch (error) {
+    } catch (_error) {
       alert('An error occurred');
     } finally {
       setIsSubmitting(false);

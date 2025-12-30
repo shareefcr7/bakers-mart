@@ -28,11 +28,11 @@ export function ProductList({ initialProducts }: ProductListProps) {
   
   const [products] = useState<Product[]>(initialProducts)
 
+ 
+  // Update state when URL param changes
   useEffect(() => {
-     if(searchParams.get("category")) {
-         setActiveCategory(searchParams.get("category")!)
-     }
-  }, [searchParams])
+     setActiveCategory(initialCategory)
+  }, [initialCategory])
 
   // Filter logic
   let filteredProducts = activeCategory === "All" 
@@ -104,7 +104,7 @@ export function ProductList({ initialProducts }: ProductListProps) {
               <div className="mb-6 p-4 bg-white/5 border border-white/10 rounded-lg flex items-center gap-2 text-white/80">
                 <Search className="w-4 h-4" />
                 <p>
-                  Results for <span className="font-bold text-white">"{searchQueryParam}"</span>
+                  Results for <span className="font-bold text-white">&quot;{searchQueryParam}&quot;</span>
                   <span className="text-white/40 text-sm ml-2">({filteredProducts.length} items)</span>
                 </p>
               </div>

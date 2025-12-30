@@ -1,12 +1,12 @@
 
 import { NextResponse } from 'next/server';
-import { getCategories, addCategory, Category } from '@/lib/db';
+import { getCategories, addCategory } from '@/lib/db';
 
 export async function GET() {
   try {
     const categories = await getCategories();
     return NextResponse.json(categories);
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json({ error: 'Failed to fetch categories' }, { status: 500 });
   }
 }
@@ -28,10 +28,11 @@ export async function POST(request: Request) {
     try {
         const added = await addCategory(newCategory);
         return NextResponse.json(added, { status: 201 });
-    } catch (e: any) {
-        return NextResponse.json({ error: e.message }, { status: 400 });
+    } catch (e: unknown) {
+        const message = e instanceof Error ? e.message : String(e);
+        return NextResponse.json({ error: message }, { status: 400 });
     }
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json({ error: 'Failed to create category' }, { status: 500 });
   }
 }

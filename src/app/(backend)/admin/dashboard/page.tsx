@@ -1,20 +1,18 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { Package, Layers, TrendingUp, DollarSign } from 'lucide-react';
+import { Package, Layers, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 
 interface DashboardStats {
   totalProducts: number;
   totalCategories: number;
-  totalValue: number;
 }
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState<DashboardStats>({
     totalProducts: 0,
     totalCategories: 0,
-    totalValue: 0
   });
 
   useEffect(() => {
@@ -29,16 +27,9 @@ export default function AdminDashboard() {
         const products = await productsRes.json();
         const categories = await categoriesRes.json();
 
-        // Calculate total value (parsing "$18.99" etc)
-        const totalValue = products.reduce((acc: number, p: any) => {
-          const price = parseFloat(p.price.replace(/[^0-9.]/g, '')) || 0;
-          return acc + price;
-        }, 0);
-
         setStats({
           totalProducts: products.length || 0,
           totalCategories: categories.length || 0,
-          totalValue
         });
       } catch (error) {
         console.error("Failed to load dashboard data", error);
@@ -62,13 +53,6 @@ export default function AdminDashboard() {
       icon: Layers,
       color: 'bg-indigo-500',
       href: '/admin/categories'
-    },
-    {
-      title: 'Total Inventory Value',
-      value: `$${stats.totalValue.toFixed(2)}`,
-      icon: DollarSign,
-      color: 'bg-green-500',
-      href: '/admin/products'
     },
     {
       title: 'System Status',

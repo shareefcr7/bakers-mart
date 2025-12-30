@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, useRef } from 'react';
-import { Upload, X, Loader2, Plus } from 'lucide-react';
+import { X, Loader2, Plus } from 'lucide-react';
 import Image from 'next/image';
 
 interface MultiImageUploadProps {
@@ -71,7 +71,7 @@ export default function MultiImageUpload({ values = [], onChange, disabled }: Mu
             />
             <button
               onClick={() => handleRemove(index)}
-              className="absolute top-2 right-2 p-1.5 bg-red-600 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-0"
+              className="absolute top-2 right-2 p-1.5 bg-red-600 text-white rounded-full transition-opacity shadow-sm hover:bg-red-700"
               disabled={disabled}
               type="button"
             >

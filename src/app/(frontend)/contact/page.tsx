@@ -3,7 +3,7 @@
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { Mail, Phone, MapPin, Send } from "lucide-react"
-import Image from "next/image"
+
 
 import { AnimatedHeading } from "@/components/ui/animated-heading"
 import { FadeIn } from "@/components/ui/fade-in"
