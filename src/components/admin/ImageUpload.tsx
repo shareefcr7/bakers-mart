@@ -33,7 +33,11 @@ export default function ImageUpload({ value, onChange, disabled }: ImageUploadPr
       if (data.success) {
         onChange(data.url);
       } else {
-        alert('Upload failed: ' + (data.error || 'Unknown error'));
+        if (data.error?.includes("Read-only file system") || data.error?.includes("MISSING CLOUDINARY KEYS")) {
+           alert("DEPLOYMENT ERROR: Cloudinary keys are missing in Vercel settings. Please add NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET.");
+        } else {
+           alert('Upload failed: ' + (data.error || 'Unknown error'));
+        }
       }
     } catch (error) {
       console.error('Upload error:', error);

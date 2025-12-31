@@ -45,7 +45,7 @@ export default function MultiImageUpload({ values = [], onChange, disabled }: Mu
 
     } catch (error) {
       console.error('Upload error:', error);
-      alert('One or more uploads failed');
+      alert('One or more uploads failed. If on Vercel, check if Cloudinary keys are set.');
     } finally {
       setIsUploading(false);
       if (fileInputRef.current) fileInputRef.current.value = '';
