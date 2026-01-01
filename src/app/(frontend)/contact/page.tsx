@@ -6,6 +6,7 @@ import { Mail, Phone, MapPin, Send, Loader2, CheckCircle2 } from "lucide-react"
 
 import { AnimatedHeading } from "@/components/ui/animated-heading"
 import { FadeIn } from "@/components/ui/fade-in"
+import { Breadcrumb } from "@/components/ui/breadcrumb"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -54,7 +55,12 @@ export default function ContactPage() {
       <section className="relative py-24 md:py-32 bg-white overflow-hidden">
         <div className="container mx-auto px-4 text-center relative z-10">
           <AnimatedHeading title="Contact Us" textColor="text-[#7E0806]" iconSrc="/best-sellers-logo.png" />
-          <FadeIn delay={0.2}><p className="text-[#7E0806]/80 mt-4 text-lg md:text-xl font-medium max-w-2xl mx-auto">We&apos;d love to hear from you. Get in touch with us.</p></FadeIn>
+          
+          <div className="flex justify-center mt-6">
+            <Breadcrumb color="text-[#7E0806]" />
+          </div>
+
+          <FadeIn delay={0.2}><p className="text-[#7E0806]/80 mt-6 text-lg md:text-xl font-medium max-w-2xl mx-auto">We&apos;d love to hear from you. Get in touch with us.</p></FadeIn>
         </div>
       </section>
 

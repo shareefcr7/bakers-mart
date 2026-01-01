@@ -6,6 +6,7 @@ import { getProducts, getCategories } from "@/lib/db"
 import { AnimatedHeading } from "@/components/ui/animated-heading"
 import { ProductGridSkeleton } from "@/components/skeletons"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
+import { Breadcrumb } from "@/components/ui/breadcrumb"
 
 // Force dynamic to ensure data is fresh
 export const dynamic = 'force-dynamic'
@@ -27,8 +28,11 @@ export default function ProductsPage() {
           <ScrollReveal variant="fadeIn" delay={0.1}>
             <AnimatedHeading 
               title="Our Premium Collection"
-              className="mb-12 text-[#7E0806]"
+              className="mb-4 text-[#7E0806]"
             />
+            <div className="flex justify-center mb-12">
+               <Breadcrumb color="text-[#7E0806]" />
+            </div>
           </ScrollReveal>
           
           <ScrollReveal variant="fadeUrl" delay={0.3}>
