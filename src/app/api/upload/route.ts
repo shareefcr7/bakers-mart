@@ -35,7 +35,12 @@ export async function POST(request: Request) {
     const buffer = Buffer.from(bytes);
 
     // Upload to Cloudinary using a promise wrapper
-    const result = await new Promise<any>((resolve, reject) => {
+    interface CloudinaryUploadResult {
+      secure_url: string;
+      public_id: string;
+    }
+
+    const result = await new Promise<CloudinaryUploadResult>((resolve, reject) => {
       const uploadStream = cloudinary.uploader.upload_stream(
         {
           folder: 'bakery-mart-products', // Optional folder
@@ -43,7 +48,7 @@ export async function POST(request: Request) {
         },
         (error, result) => {
           if (error) reject(error);
-          else resolve(result);
+          else resolve(result as CloudinaryUploadResult);
         }
       );
       
@@ -57,10 +62,11 @@ export async function POST(request: Request) {
       public_id: result.public_id
     });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Upload error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Upload failed';
     return NextResponse.json(
-      { error: error.message || 'Upload failed' },
+      { error: errorMessage },
       { status: 500 }
     );
   }

@@ -22,10 +22,11 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true, message: 'Message sent successfully!', data: newMessage });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Contact Form Error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Failed to send message.';
     return NextResponse.json(
-      { error: error.message || 'Failed to send message.' },
+      { error: errorMessage },
       { status: 500 }
     );
   }

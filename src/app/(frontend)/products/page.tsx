@@ -2,7 +2,7 @@ import { Suspense } from "react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { ProductList } from "@/components/product-list"
-import { getProducts, getCategories } from "@/lib/db"
+import { getProducts, getCategories, IProduct } from "@/lib/db"
 import { AnimatedHeading } from "@/components/ui/animated-heading"
 import { ProductGridSkeleton } from "@/components/skeletons"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
@@ -13,7 +13,7 @@ export const dynamic = 'force-dynamic'
 
 // Async component to fetch data
 async function ProductGrid() {
-  const products = (await getProducts()) as any[] // Using any to bypass IProduct vs Product type noise for now, or use IProduct
+  const products = (await getProducts()) as IProduct[]
   const categories = await getCategories()
   return <ProductList initialProducts={products} categories={categories} />
 }

@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from "react"
 import { ProductCard } from "@/components/product-card"
-import { Product } from "@/lib/data" // Keep Product type for now if needed, or switch to IProduct
+
 import { IProduct, ICategory } from "@/lib/db"
 import { useSearchParams } from "next/navigation" 
 import { AnimatePresence, motion } from "framer-motion"

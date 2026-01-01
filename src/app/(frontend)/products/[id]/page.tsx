@@ -5,7 +5,7 @@ import { getProductById, getProducts } from "@/lib/db"
 import { notFound } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
-import { Check, Mail, Share2, Search } from "lucide-react"
+import { Check, Mail, Share2 } from "lucide-react"
 import { ProductCard } from "@/components/product-card"
 
 // Removing generateStaticParams to allow dynamic rendering for new database items
