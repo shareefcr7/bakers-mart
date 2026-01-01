@@ -108,3 +108,13 @@ export async function deleteCategory(id: string) {
   const deleted = await Category.findOneAndDelete({ id });
   return deleted ? JSON.parse(JSON.stringify(deleted)) : null;
 }
+
+// Messages
+import Message from '@/models/Message';
+
+export async function addMessage(messageData: { name: string, email: string, subject: string, message: string }) {
+  await initDB();
+  const newMessage = new Message(messageData);
+  await newMessage.save();
+  return JSON.parse(JSON.stringify(newMessage));
+}

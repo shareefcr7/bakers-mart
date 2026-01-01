@@ -1,14 +1,52 @@
-"use client"
-
+import { useState } from "react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
-import { Mail, Phone, MapPin, Send } from "lucide-react"
+import { Mail, Phone, MapPin, Send, Loader2, CheckCircle2 } from "lucide-react"
 
 
 import { AnimatedHeading } from "@/components/ui/animated-heading"
 import { FadeIn } from "@/components/ui/fade-in"
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  })
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle")
+  const [errorMessage, setErrorMessage] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setStatus("submitting")
+    setErrorMessage("")
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await res.json()
+
+      if (res.ok) {
+        setStatus("success")
+        setFormData({ name: "", email: "", subject: "", message: "" })
+        // Reset status after 3 seconds
+        setTimeout(() => setStatus("idle"), 3000)
+      } else {
+        setStatus("error")
+        setErrorMessage(data.error || "Failed to send message")
+      }
+    } catch (error) {
+      console.error(error)
+      setStatus("error")
+      setErrorMessage("Something went wrong. Please try again.")
+    }
+  }
+
   return (
     <main className="min-h-screen bg-black text-[#f3e5b5]">
       <Navbar />
@@ -80,30 +118,82 @@ export default function ContactPage() {
           {/* Contact Form */}
           <div className="bg-white/5 p-8 rounded-2xl border border-white/10 shadow-sm backdrop-blur-sm">
             <h2 className="text-2xl font-bold mb-6 text-[#f3e5b5]">Send us a Message</h2>
-            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-[#f3e5b5]">Name</label>
-                  <input id="name" type="text" className="w-full px-4 py-2 rounded-lg border border-white/20 bg-white/5 focus:ring-2 focus:ring-[#f3e5b5] focus:outline-none text-[#f3e5b5] placeholder:text-white/30" placeholder="Your Name" />
+                  <input 
+                    id="name" 
+                    type="text" 
+                    value={formData.name}
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    required
+                    className="w-full px-4 py-2 rounded-lg border border-white/20 bg-white/5 focus:ring-2 focus:ring-[#f3e5b5] focus:outline-none text-[#f3e5b5] placeholder:text-white/30" 
+                    placeholder="Your Name" 
+                  />
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-sm font-medium text-[#f3e5b5]">Email</label>
-                  <input id="email" type="email" className="w-full px-4 py-2 rounded-lg border border-white/20 bg-white/5 focus:ring-2 focus:ring-[#f3e5b5] focus:outline-none text-[#f3e5b5] placeholder:text-white/30" placeholder="your@email.com" />
+                  <input 
+                    id="email" 
+                    type="email" 
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    required
+                    className="w-full px-4 py-2 rounded-lg border border-white/20 bg-white/5 focus:ring-2 focus:ring-[#f3e5b5] focus:outline-none text-[#f3e5b5] placeholder:text-white/30" 
+                    placeholder="your@email.com" 
+                  />
                 </div>
               </div>
               
               <div className="space-y-2">
                 <label htmlFor="subject" className="text-sm font-medium text-[#f3e5b5]">Subject</label>
-                <input id="subject" type="text" className="w-full px-4 py-2 rounded-lg border border-white/20 bg-white/5 focus:ring-2 focus:ring-[#f3e5b5] focus:outline-none text-[#f3e5b5] placeholder:text-white/30" placeholder="How can we help?" />
+                <input 
+                  id="subject" 
+                  type="text" 
+                  value={formData.subject}
+                  onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                  required
+                  className="w-full px-4 py-2 rounded-lg border border-white/20 bg-white/5 focus:ring-2 focus:ring-[#f3e5b5] focus:outline-none text-[#f3e5b5] placeholder:text-white/30" 
+                  placeholder="How can we help?" 
+                />
               </div>
 
               <div className="space-y-2">
                 <label htmlFor="message" className="text-sm font-medium text-[#f3e5b5]">Message</label>
-                <textarea id="message" rows={5} className="w-full px-4 py-2 rounded-lg border border-white/20 bg-white/5 focus:ring-2 focus:ring-[#f3e5b5] focus:outline-none resize-none text-[#f3e5b5] placeholder:text-white/30" placeholder="Your message..."></textarea>
+                <textarea 
+                  id="message" 
+                  rows={5} 
+                  value={formData.message}
+                  onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  required
+                  className="w-full px-4 py-2 rounded-lg border border-white/20 bg-white/5 focus:ring-2 focus:ring-[#f3e5b5] focus:outline-none resize-none text-[#f3e5b5] placeholder:text-white/30" 
+                  placeholder="Your message..."
+                ></textarea>
               </div>
 
-              <button className="w-full bg-[#f3e5b5] text-black font-bold py-3 rounded-lg hover:bg-[#f3e5b5]/90 transition-colors flex items-center justify-center gap-2">
-                Send Message <Send className="w-4 h-4" />
+              {status === "error" && (
+                <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-lg text-red-500 text-sm">
+                  {errorMessage}
+                </div>
+              )}
+
+              {status === "success" && (
+                <div className="p-3 bg-green-500/10 border border-green-500/20 rounded-lg text-green-500 text-sm flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4" /> Message sent successfully!
+                </div>
+              )}
+
+              <button 
+                type="submit" 
+                disabled={status === "submitting" || status === "success"}
+                className="w-full bg-[#f3e5b5] text-black font-bold py-3 rounded-lg hover:bg-[#f3e5b5]/90 transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {status === "submitting" ? (
+                  <>Sending... <Loader2 className="w-4 h-4 animate-spin" /></>
+                ) : (
+                  <>Send Message <Send className="w-4 h-4" /></>
+                )}
               </button>
             </form>
           </div>
