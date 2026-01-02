@@ -28,6 +28,10 @@ export async function POST(request: Request) {
         });
     }
 
+    console.log("Attempting to send email...");
+    console.log("EMAIL_USER Present:", !!process.env.EMAIL_USER);
+    console.log("EMAIL_PASS Present:", !!process.env.EMAIL_PASS);
+
     // Send Email
     if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
         const transporter = nodemailer.createTransport({
