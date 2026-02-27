@@ -7,9 +7,7 @@ import Image from "next/image"
 import { Mail, Phone, MapPin, Send, Loader2, CheckCircle2, MessageCircle } from "lucide-react"
 
 
-import { AnimatedHeading } from "@/components/ui/animated-heading"
 import { FadeIn } from "@/components/ui/fade-in"
-import { Breadcrumb } from "@/components/ui/breadcrumb"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -55,7 +53,7 @@ export default function ContactPage() {
     <main className="min-h-screen bg-black text-[#f3e5b5]">
       <Navbar />
       
-      <section className="relative py-28 md:py-40 min-h-[420px] flex items-center overflow-hidden bg-black">
+      <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden bg-black">
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/contact-hero-bg.png"
@@ -69,14 +67,17 @@ export default function ContactPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/40" />
           <div className="absolute inset-0 bg-black/30" />
         </div>
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <AnimatedHeading title="Contact Us" textColor="text-white" iconSrc="/best-sellers-logo.png" />
-          
-          <div className="flex justify-center mt-6">
-            <Breadcrumb color="text-[#f3e5b5]" />
-          </div>
-
-          <FadeIn delay={0.2}><p className="text-[#f3e5b5]/90 mt-6 text-lg md:text-xl font-medium max-w-2xl mx-auto">We&apos;d love to hear from you. Get in touch with us.</p></FadeIn>
+        <div className="container mx-auto px-4 text-center relative z-10 translate-y-8 flex flex-col items-center justify-center">
+          <FadeIn delay={0.2}>
+            <h1 className="text-5xl md:text-7xl lg:text-[6rem] mt-2 max-w-5xl mx-auto font-black tracking-tight leading-[1.1] text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f3e5b5] to-[#c69b4e] hover:from-[#e5c07b] hover:via-white hover:to-[#e5c07b] transition-all duration-1000 animate-pulse hover:scale-105 drop-shadow-2xl cursor-default">
+              Contact Us
+            </h1>
+          </FadeIn>
+          <FadeIn delay={0.4}>
+            <p className="text-[#f3e5b5]/80 mt-8 text-lg md:text-xl font-medium max-w-2xl mx-auto">
+              We&apos;d love to hear from you. Get in touch with us.
+            </p>
+          </FadeIn>
         </div>
       </section>
 

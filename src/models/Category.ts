@@ -8,9 +8,9 @@ export interface ICategory extends Document {
 
 const CategorySchema = new Schema<ICategory>(
   {
-    id: { type: String, required: true, unique: true },
-    name: { type: String, required: true },
-    image: { type: String, required: true },
+    id:    { type: String, required: true, unique: true },
+    name:  { type: String, required: true },
+    image: { type: String, required: false, default: '' }, // optional — validated at API level
   },
   {
     timestamps: true,
