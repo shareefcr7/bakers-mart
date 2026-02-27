@@ -1,12 +1,12 @@
-import { NextResponse } from 'next/server';
-import { deleteCategory } from '@/lib/db';
+import { NextResponse, NextRequest } from 'next/server';
+import { deleteCategory, updateCategory } from '@/lib/db';
 
 export async function DELETE(
-  request: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const id = params.id;
+    const { id } = await params;
     if (!id) {
       return NextResponse.json({ error: 'Category ID is required' }, { status: 400 });
     }
@@ -27,13 +27,13 @@ export async function DELETE(
 }
 
 export async function PUT(
-  request: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const body = await request.json();
-    const { updateCategory } = await import('@/lib/db');
-    const updated = await updateCategory(params.id, body);
+    const updated = await updateCategory(id, body);
     if (updated) {
       return NextResponse.json(updated);
     } else {
