@@ -55,18 +55,19 @@ export default function ContactPage() {
     <main className="min-h-screen bg-black text-[#f3e5b5]">
       <Navbar />
       
-      <section className="relative py-24 md:py-32 overflow-hidden bg-black">
+      <section className="relative py-28 md:py-40 min-h-[420px] flex items-center overflow-hidden bg-black">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/packaging-boxes.png"
+            src="/images/contact-hero-bg.png"
             alt="Contact Bakersmart"
             fill
-            className="object-cover object-center"
+            className="object-cover object-center scale-105"
             priority
             quality={100}
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/40" />
+          <div className="absolute inset-0 bg-black/30" />
         </div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <AnimatedHeading title="Contact Us" textColor="text-white" iconSrc="/best-sellers-logo.png" />
