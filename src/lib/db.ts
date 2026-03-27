@@ -118,3 +118,9 @@ export async function addMessage(messageData: { name: string, email: string, sub
   await newMessage.save();
   return JSON.parse(JSON.stringify(newMessage));
 }
+
+export async function getCategoryById(id: string) {
+  await initDB();
+  const category = await Category.findOne({ id }).lean();
+  return category ? JSON.parse(JSON.stringify(category)) : null;
+}

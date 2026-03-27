@@ -1,5 +1,23 @@
 import { NextResponse, NextRequest } from 'next/server';
-import { deleteCategory, updateCategory } from '@/lib/db';
+import { deleteCategory, updateCategory, getCategoryById } from '@/lib/db';
+
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  try {
+    const { id } = await params;
+    const category = await getCategoryById(id);
+    if (category) {
+      return NextResponse.json(category);
+    } else {
+      return NextResponse.json({ error: 'Category not found' }, { status: 404 });
+    }
+  } catch (error: unknown) {
+    console.error('Failed to load category:', error);
+    return NextResponse.json({ error: 'Failed to load category' }, { status: 500 });
+  }
+}
 
 export async function DELETE(
   request: NextRequest,
